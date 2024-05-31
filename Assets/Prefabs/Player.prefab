@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6000953725630362315}
   - component: {fileID: -7620611339418453049}
   - component: {fileID: 5109521706241027140}
+  - component: {fileID: 6584883392957769217}
   - component: {fileID: 8805680191045033455}
   - component: {fileID: 4859436379276288842}
   m_Layer: 0
@@ -234,6 +235,21 @@ MonoBehaviour:
   m_DefaultActionMap: Control
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &6584883392957769217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6149922470430357432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efbbc75ecbfa18043abf6038d93c3b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerDeathEvent: {fileID: 11400000, guid: d698c7f256d1ead4e98a7c06df94bf42, type: 2}
+  playerMovement: {fileID: -7620611339418453049}
+  survivalPoints: {fileID: 6000953725630362315}
 --- !u!50 &8805680191045033455
 Rigidbody2D:
   serializedVersion: 4
