@@ -7,6 +7,9 @@ public class GameOver : GameEventListener
 {
     [SerializeField] private GameEvent PlayerDiedEvent;
     [SerializeField] private GameObject gameOverMenu;
+    [SerializeField] private Scoreboard scoreboard;
+    [SerializeField] private TMPro.TextMeshProUGUI highscore;
+    [SerializeField] private TMPro.TextMeshProUGUI score;
 
     public void Continue()
     {
@@ -20,8 +23,11 @@ public class GameOver : GameEventListener
 
     public override void OnInvoke()
     {
-        gameOverMenu.SetActive(true);
         Debug.Log("GameOver: Player Died");
+        
+        highscore.text = "High Score: " + scoreboard.Highscore;
+        score.text = "Score: " + scoreboard.Score;
+        gameOverMenu.SetActive(true);
     }
 
     void Start()

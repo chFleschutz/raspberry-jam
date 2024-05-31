@@ -8,11 +8,14 @@ public class Scoreboard : GameEventListenerInt
     [SerializeField] private GameEventInt onScoreChanged;
     // Event is called every time points are awarded with the points awarded
     [SerializeField] private GameEventInt onPointsAwarded;
+    
     [SerializeField] private bool logScoreChanges;
+    [SerializeField] private int highScore;
 
     private int score = 0;
 
     public int Score => score;
+    public int Highscore => highScore;
 
     public void Add(int points)
     {
@@ -32,10 +35,21 @@ public class Scoreboard : GameEventListenerInt
     void Start()
     {
         onPointsAwarded.RegisterListener(this);
+
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
+        if (logScoreChanges)
+            Debug.Log("High Score: " + highScore);
     }
 
     void OnDestroy()
     {
         onPointsAwarded.UnregisterListener(this);
+
+        if (score >= highScore)
+        {
+            PlayerPrefs.SetInt("HighScore", score);
+            if (logScoreChanges)
+                Debug.Log("New High Score: " + score);
+        }
     }
 }
