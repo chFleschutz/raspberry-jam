@@ -449,6 +449,52 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
+--- !u!1 &103210372
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 103210374}
+  - component: {fileID: 103210373}
+  m_Layer: 0
+  m_Name: DamageDealer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &103210373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103210372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f3cd6024a2db2f4cb4d559a0ced118f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onPlayerDamaged: {fileID: 11400000, guid: 81c9a0d618e78b341a75d47658118bbb, type: 2}
+  player: {fileID: 1124376367}
+--- !u!4 &103210374
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103210372}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 596.8805, y: 327.1982, z: 3.1180859}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &127562195
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -589,7 +635,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 705160921}
+      - m_Target: {fileID: 1397341691}
         m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
         m_MethodName: Continue
         m_Mode: 1
@@ -740,7 +786,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 705160920}
-  - component: {fileID: 705160921}
   m_Layer: 5
   m_Name: GameOverMenu
   m_TagString: Untagged
@@ -770,18 +815,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 500, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &705160921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 705160919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2782c87573067034e8ce6cfb7ad8eeb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1029290973
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,12 +828,12 @@ GameObject:
   - component: {fileID: 1029290976}
   - component: {fileID: 1029290975}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: GameOverCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1029290974
 RectTransform:
   m_ObjectHideFlags: 0
@@ -884,6 +917,11 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1124376367 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6149922470430357432, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
+  m_PrefabInstance: {fileID: 58186702}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1363942833
 GameObject:
   m_ObjectHideFlags: 0
@@ -961,6 +999,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1397341690}
+  - component: {fileID: 1397341691}
   m_Layer: 0
   m_Name: GameOver
   m_TagString: Untagged
@@ -984,6 +1023,20 @@ Transform:
   - {fileID: 1029290974}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1397341691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397341689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2782c87573067034e8ce6cfb7ad8eeb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerDiedEvent: {fileID: 11400000, guid: d698c7f256d1ead4e98a7c06df94bf42, type: 2}
+  gameOverMenu: {fileID: 1029290973}
 --- !u!1 &1656376822
 GameObject:
   m_ObjectHideFlags: 0
@@ -1201,7 +1254,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 705160921}
+      - m_Target: {fileID: 1397341691}
         m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
         m_MethodName: Quit
         m_Mode: 1
@@ -1260,3 +1313,4 @@ SceneRoots:
   - {fileID: 58186702}
   - {fileID: 1397341690}
   - {fileID: 1363942836}
+  - {fileID: 103210374}

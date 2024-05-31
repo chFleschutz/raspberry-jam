@@ -5,6 +5,7 @@ using UnityEngine;
 public class DamageDealer : GameEventListenerFloat
 {
     [SerializeField] private GameEventFloat onPlayerDamaged;
+    [SerializeField] private GameObject player;
 
     public override void OnInvoke(float health)
     {
@@ -20,7 +21,7 @@ public class DamageDealer : GameEventListenerFloat
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Health health = GetComponent<Health>();
+            Health health = player.GetComponent<Health>();
             if (health != null)
             {
                 health.TakeDamage(10.0f);

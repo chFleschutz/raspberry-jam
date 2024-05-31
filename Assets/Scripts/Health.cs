@@ -16,12 +16,10 @@ public class Health : MonoBehaviour
             return;
 
         health -= damage;
-        if (health <= 0)
-        {
-            onDeath.Invoke(this);
-        }
-
         onHealthChanged.Invoke(this, health);
+
+        if (health <= 0)
+            onDeath.Invoke(this);
     }
 
     void Start()
