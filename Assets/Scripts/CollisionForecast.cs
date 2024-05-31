@@ -1,3 +1,4 @@
+using System.Drawing;
 using UnityEngine;
 
 /// <summary>
@@ -72,6 +73,7 @@ public static class CollisionForecast
     /// <returns></returns>
     public static Vector2 ForecastBox2D(GameObject sourceObject, Vector2 origin, Vector2 direction, float distance, Vector2 size, float angle, LayerMask lm)
     {
+        size *= 0.99f;
         RaycastHit2D[] hits = new RaycastHit2D[20];
         int hitCount = Physics2D.BoxCastNonAlloc(origin, size, angle, direction, hits, distance, lm);
         hits = FilterCollider2D(hits, hitCount, out hitCount, true, true, sourceObject);
@@ -81,15 +83,15 @@ public static class CollisionForecast
 
         RaycastHit2D closestHit = hits[0];
 
-        foreach (RaycastHit2D hit in hits)
+        for(int i = 0; i < hitCount; i++)
         {
-            if((closestHit.point - origin).magnitude > (hit.point - origin).magnitude)
+            if((closestHit.point - origin).magnitude > (hits[i].point - origin).magnitude)
                 continue;
 
-            closestHit = hit;
+            closestHit = hits[i];
         }
 
-        return closestHit.point;
+        return origin + direction.normalized * closestHit.distance;
     }
 
     /// <summary>
@@ -130,6 +132,7 @@ public static class CollisionForecast
     /// <returns></returns>
     public static Vector2 ForecastCapsule2D(GameObject sourceObject, Vector2 origin, Vector2 direction, float distance, Vector2 size, CapsuleDirection2D extentDirection, float angle, LayerMask lm)
     {
+        size *= 0.99f;
         RaycastHit2D[] hits = new RaycastHit2D[20];
         int hitCount;
         if (size.x == size.y)
@@ -152,7 +155,7 @@ public static class CollisionForecast
             closestHit = hit;
         }
 
-        return closestHit.point;
+        return origin + direction.normalized * closestHit.distance;
     }
 
     /// <summary>
@@ -222,6 +225,7 @@ public static class CollisionForecast
     /// <returns></returns>
     public static Vector3 ForecastBox(GameObject sourceObject, Vector3 origin, Vector3 direction, float distance, Vector3 halfSize, Quaternion orientation, LayerMask lm)
     {
+        halfSize *= 0.99f;
         RaycastHit[] hits = new RaycastHit[20];
         int hitCount = Physics.BoxCastNonAlloc(origin, halfSize, direction, hits, orientation, distance, lm);
         hits = FilterCollider(hits, hitCount, out hitCount, true, true, sourceObject);
@@ -239,7 +243,7 @@ public static class CollisionForecast
             closestHit = hit;
         }
 
-        return closestHit.point;
+        return origin + direction.normalized * closestHit.distance;
     }
 
     /// <summary>
@@ -280,6 +284,7 @@ public static class CollisionForecast
     /// <returns></returns>
     public static Vector3 ForecastCapsule(GameObject sourceObject, Vector3 origin1, Vector3 origin2, Vector3 direction, float distance, float radius, LayerMask lm)
     {
+        radius *= 0.99f;
         Vector3 origin = origin1 + ((origin2 - origin1) * 0.5f);
         RaycastHit[] hits = new RaycastHit[20];
         int hitCount;
@@ -303,7 +308,7 @@ public static class CollisionForecast
             closestHit = hit;
         }
 
-        return closestHit.point;
+        return origin + direction.normalized * closestHit.distance;
     }
 
     private static RaycastHit2D[] FilterCollider2D(RaycastHit2D[] hits, int hitCount, out int newCount, bool ignoreTrigger, bool ignoreSourceObject, GameObject sourceObject)
