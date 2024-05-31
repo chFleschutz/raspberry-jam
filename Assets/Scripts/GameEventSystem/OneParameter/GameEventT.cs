@@ -5,7 +5,7 @@ using UnityEngine;
 /// Base Class for all GameEvents using a single parameter
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public abstract class GameEvent<T> : GameEvent
+public abstract class GameEvent<T> : ScriptableObject
 {
     // List of Listeners listening to the event in general
     private List<GameEventListener<T>> listeners = new List<GameEventListener<T>>();
