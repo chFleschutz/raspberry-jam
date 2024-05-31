@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 137865509}
   - component: {fileID: 137865508}
   - component: {fileID: 137865511}
+  - component: {fileID: 137865512}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -328,6 +329,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onPlayerDamaged: {fileID: 11400000, guid: 81c9a0d618e78b341a75d47658118bbb, type: 2}
+--- !u!114 &137865512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137865507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ef26052bac9ad14cad7732545a1dd4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointsAwardedEvent: {fileID: 11400000, guid: f0f1994c8e99b6e448c5a8435687063f, type: 2}
+  pointsPerUpdate: 10
+  updateInterval: 1
 --- !u!1001 &1462625799
 PrefabInstance:
   m_ObjectHideFlags: 0

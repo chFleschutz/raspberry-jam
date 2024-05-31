@@ -10,7 +10,7 @@ public class PointSupplier : GameEventListenerInt
 
     public override void OnInvoke(int score)
     {
-        Debug.Log("Score: " + score);
+        Debug.Log("Point Supplier yells: score " + score);
     }
 
     void Start()

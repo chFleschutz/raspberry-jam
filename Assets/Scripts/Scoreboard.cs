@@ -8,6 +8,7 @@ public class Scoreboard : GameEventListenerInt
     [SerializeField] private GameEventInt onScoreChanged;
     // Event is called every time points are awarded with the points awarded
     [SerializeField] private GameEventInt onPointsAwarded;
+    [SerializeField] private bool logScoreChanges;
 
     private int score = 0;
 
@@ -16,6 +17,10 @@ public class Scoreboard : GameEventListenerInt
     public void Add(int points)
     {
         score += points;
+
+        if (logScoreChanges)
+            Debug.Log("Score changed: " + score + " (Added: " + points + ")");
+
         onScoreChanged.Invoke(this, score);
     }
 
