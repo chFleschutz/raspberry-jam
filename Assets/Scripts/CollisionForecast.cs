@@ -57,7 +57,21 @@ public static class CollisionForecast
     /// <returns></returns>
     public static Vector2 ForecastBox2D(GameObject sourceObject, Vector2 direction, Vector2 size)
     {
-        return ForecastBox2D(sourceObject, sourceObject.transform.position, direction.normalized, direction.magnitude, size, 0, Physics2D.AllLayers);
+        RaycastHit2D hit;
+        return ForecastBox2D(sourceObject, sourceObject.transform.position, direction.normalized, direction.magnitude, size, 0, Physics2D.AllLayers, out hit);
+    }
+
+    /// <summary>
+    /// Shoots a Box from the source objects position in the direction given with the predefined size using the directions length as distance and returns the nearest hit point or the end of the check distance
+    /// </summary>
+    /// <param name="sourceObject"></param>
+    /// <param name="direction"></param>
+    /// <param name="size"></param>
+    /// <param name="hit"></param>
+    /// <returns></returns>
+    public static Vector2 ForecastBox2D(GameObject sourceObject, Vector2 direction, Vector2 size, out RaycastHit2D hit)
+    {
+        return ForecastBox2D(sourceObject, sourceObject.transform.position, direction.normalized, direction.magnitude, size, 0, Physics2D.AllLayers, out hit);
     }
 
     /// <summary>
@@ -71,8 +85,9 @@ public static class CollisionForecast
     /// <param name="angle"></param>
     /// <param name="lm"></param>
     /// <returns></returns>
-    public static Vector2 ForecastBox2D(GameObject sourceObject, Vector2 origin, Vector2 direction, float distance, Vector2 size, float angle, LayerMask lm)
+    public static Vector2 ForecastBox2D(GameObject sourceObject, Vector2 origin, Vector2 direction, float distance, Vector2 size, float angle, LayerMask lm, out RaycastHit2D hit)
     {
+        hit = new RaycastHit2D();
         size *= 0.99f;
         RaycastHit2D[] hits = new RaycastHit2D[20];
         int hitCount = Physics2D.BoxCastNonAlloc(origin, size, angle, direction, hits, distance, lm);
@@ -90,6 +105,8 @@ public static class CollisionForecast
 
             closestHit = hits[i];
         }
+
+        hit = closestHit;
 
         return origin + direction.normalized * closestHit.distance;
     }

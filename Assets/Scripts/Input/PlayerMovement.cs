@@ -62,7 +62,16 @@ public class PlayerMovement : MonoBehaviour
 
         if (!charging && velocity > 0)
         {
-            transform.position = CollisionForecast.ForecastBox2D(gameObject, movementDirection.normalized * Time.deltaTime * velocity * chargePower, Vector2.one);
+            RaycastHit2D hit;
+            Vector2 direction = movementDirection.normalized * Time.deltaTime * velocity * chargePower;
+            Vector2 probablyPosition = new Vector2(transform.position.x, transform.position.y) + direction;
+            Vector2 predictedPositon = CollisionForecast.ForecastBox2D(gameObject, direction, Vector2.one, out hit);
+            transform.position = predictedPositon;
+            if (probablyPosition != predictedPositon)
+            {
+                movementDirection = Vector2.Reflect(movementDirection, hit.normal);
+                velocity *= 0.8f;
+            }
             charge = 0;
             onCooldown = true;
             velocity -= Time.deltaTime + slowDown;
