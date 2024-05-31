@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] private TMPro.TextMeshProUGUI highScore;
+
     public void Play()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -13,5 +15,10 @@ public class MainMenu : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    void Start()
+    {
+        highScore.text = "High Score: " + PlayerPrefs.GetInt("HighScore", 0);
     }
 }

@@ -9,12 +9,13 @@ public class Scoreboard : GameEventListenerInt
     // Event is called every time points are awarded with the points awarded
     [SerializeField] private GameEventInt onPointsAwarded;
     
-    [SerializeField] private int highScore;
     [SerializeField] private bool logScoreChanges;
+    [SerializeField] private int highScore;
 
     private int score = 0;
 
     public int Score => score;
+    public int Highscore => highScore;
 
     public void Add(int points)
     {
