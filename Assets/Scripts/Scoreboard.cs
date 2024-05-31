@@ -16,7 +16,6 @@ public class Scoreboard : GameEventListenerInt
     public void Add(int points)
     {
         score += points;
-        Debug.Log("Adding " + points + " points to the score (" + score + ")");
         onScoreChanged.Invoke(this, score);
     }
 

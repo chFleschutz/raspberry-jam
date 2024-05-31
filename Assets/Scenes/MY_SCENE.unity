@@ -328,52 +328,63 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onPlayerDamaged: {fileID: 11400000, guid: 81c9a0d618e78b341a75d47658118bbb, type: 2}
---- !u!1 &1205920649
-GameObject:
+--- !u!1001 &1462625799
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1205920651}
-  - component: {fileID: 1205920650}
-  m_Layer: 0
-  m_Name: Scoreboard
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1205920650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1205920649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 599a3301645748e4e9fe53e46e33b4b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onScoreChanged: {fileID: 11400000, guid: 777c8008c71b48f4c9ec69fe0d373f1b, type: 2}
-  onPointsAwarded: {fileID: 11400000, guid: f0f1994c8e99b6e448c5a8435687063f, type: 2}
---- !u!4 &1205920651
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1205920649}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.34239623, y: -0.117802344, z: -0.016296843}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 893798328247086898, guid: aacf5ff25b8542740b4997b0162f31d5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 893798328247086898, guid: aacf5ff25b8542740b4997b0162f31d5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 893798328247086898, guid: aacf5ff25b8542740b4997b0162f31d5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 893798328247086898, guid: aacf5ff25b8542740b4997b0162f31d5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 893798328247086898, guid: aacf5ff25b8542740b4997b0162f31d5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 893798328247086898, guid: aacf5ff25b8542740b4997b0162f31d5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 893798328247086898, guid: aacf5ff25b8542740b4997b0162f31d5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 893798328247086898, guid: aacf5ff25b8542740b4997b0162f31d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 893798328247086898, guid: aacf5ff25b8542740b4997b0162f31d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 893798328247086898, guid: aacf5ff25b8542740b4997b0162f31d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 959941951130038750, guid: aacf5ff25b8542740b4997b0162f31d5, type: 3}
+      propertyPath: m_Name
+      value: Scoreboard
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: aacf5ff25b8542740b4997b0162f31d5, type: 3}
 --- !u!1 &2040978813
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,5 +437,5 @@ SceneRoots:
   m_Roots:
   - {fileID: 116874554}
   - {fileID: 137865510}
-  - {fileID: 1205920651}
   - {fileID: 2040978815}
+  - {fileID: 1462625799}

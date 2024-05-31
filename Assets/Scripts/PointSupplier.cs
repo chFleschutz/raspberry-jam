@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Press P to award 10 points
 public class PointSupplier : GameEventListenerInt
 {
     [SerializeField] private GameEventInt onScoreChanged;
