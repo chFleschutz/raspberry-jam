@@ -35,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     private float velocity;
      
     [SerializeField] private Slider slider;
+    [SerializeField] private Slider slider2;
     [SerializeField] private float speed;
     private Vector2 inputDirection;
     private Vector2 mousePosition;
@@ -45,6 +46,9 @@ public class PlayerMovement : MonoBehaviour
     public void AddFuel(float fuel)
     {
         currentFuel += fuel;
+
+        if(currentFuel > maxFuel)
+            currentFuel = maxFuel;
     }
 
     public void AddKnockback(Vector2 direction, float power)
@@ -74,10 +78,11 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (charging && charge < chargeMax)
+        if (charging && charge < chargeMax && currentFuel > 0)
         {
-            charge += Time.deltaTime * chargeSpeed * chargeCurve.Evaluate(charge/chargeMax);
-            //velocity = charge;
+            float deltaCharge = Time.deltaTime * chargeSpeed * chargeCurve.Evaluate(charge / chargeMax);
+            charge += deltaCharge;
+            currentFuel -= deltaCharge;
         }
 
         if(!charging && charge > 0)
@@ -118,8 +123,9 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-        if (slider != null)
-            slider.value = charge/chargeMax;
+        if (slider != null) slider.value = charge/chargeMax;
+
+        if (slider2 != null) slider2.value = currentFuel / maxFuel;
     }
 
     public void OnMovement(InputAction.CallbackContext context)
