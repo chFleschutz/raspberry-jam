@@ -9,10 +9,10 @@ using UnityEngine;
 public abstract class GameEvent<T1, T2> : GameEvent
 {
     // List of Listeners listening to the event in general
-    private List<GameEventListener<T1, T2>> listeners = new List<GameEventListener<T1, T2>>();
+    private List<IGameEventListener<T1, T2>> listeners = new();
 
     // List of Listeners listening only to the event when invoked by a certain source object
-    private Dictionary<Object, List<GameEventListener<T1, T2>>> listenersOnSourceObject = new Dictionary<Object, List<GameEventListener<T1, T2>>>();
+    private Dictionary<Object, List<IGameEventListener<T1, T2>>> listenersOnSourceObject = new();
 
     /// <summary>
     /// Invokes all listeners without source object and those registered on given source object 
@@ -25,13 +25,13 @@ public abstract class GameEvent<T1, T2> : GameEvent
     {
         if (listenersOnSourceObject.ContainsKey(sourceObject))
         {
-            foreach (GameEventListener<T1, T2> listener in listenersOnSourceObject[sourceObject])
+            foreach (IGameEventListener<T1, T2> listener in listenersOnSourceObject[sourceObject])
             {
                 listener.OnInvoke(parameter1, parameter2);
             }
         }
 
-        foreach (GameEventListener<T1, T2> listener in listeners)
+        foreach (IGameEventListener<T1, T2> listener in listeners)
         {
             listener.OnInvoke(parameter1, parameter2);
         }
@@ -41,7 +41,7 @@ public abstract class GameEvent<T1, T2> : GameEvent
     /// Registers the given Listener to the GameEvent
     /// </summary>
     /// <param name="listener"></param>
-    public void RegisterListener(GameEventListener<T1, T2> listener)
+    public void RegisterListener(IGameEventListener<T1, T2> listener)
     {
         listeners.Add(listener);
     }
@@ -50,7 +50,7 @@ public abstract class GameEvent<T1, T2> : GameEvent
     /// Unregisters the given Listner from the GameEvent
     /// </summary>
     /// <param name="listener"></param>
-    public void UnregisterListener(GameEventListener<T1, T2> listener)
+    public void UnregisterListener(IGameEventListener<T1, T2> listener)
     {
         if (!listeners.Contains(listener))
         {
@@ -65,7 +65,7 @@ public abstract class GameEvent<T1, T2> : GameEvent
     /// </summary>
     /// <param name="sourceObject"></param>
     /// <param name="listener"></param>
-    public void RegisterListenerOnSourceObject(Object sourceObject, GameEventListener<T1, T2> listener)
+    public void RegisterListenerOnSourceObject(Object sourceObject, IGameEventListener<T1, T2> listener)
     {
         if (listenersOnSourceObject.ContainsKey(sourceObject))
         {
@@ -73,7 +73,7 @@ public abstract class GameEvent<T1, T2> : GameEvent
         }
         else
         {
-            listenersOnSourceObject.Add(sourceObject, new List<GameEventListener<T1, T2>> { listener });
+            listenersOnSourceObject.Add(sourceObject, new List<IGameEventListener<T1, T2>> { listener });
         }
     }
 
@@ -82,7 +82,7 @@ public abstract class GameEvent<T1, T2> : GameEvent
     /// </summary>
     /// <param name="sourceObject"></param>
     /// <param name="listener"></param>
-    public void UnregisterListenerOnSourceObject(Object sourceObject, GameEventListener<T1, T2> listener)
+    public void UnregisterListenerOnSourceObject(Object sourceObject, IGameEventListener<T1, T2> listener)
     {
         if (!listenersOnSourceObject.ContainsKey(sourceObject))
         {

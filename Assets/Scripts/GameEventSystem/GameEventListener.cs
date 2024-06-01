@@ -3,10 +3,7 @@ using UnityEngine;
 /// <summary>
 /// Base Class for all GameEventListeners without parameter
 /// </summary>
-public class GameEventListener : MonoBehaviour
+public interface IGameEventListener
 {
-    public virtual void OnInvoke()
-    {
-
-    }
+    public void OnInvoke();
 }
