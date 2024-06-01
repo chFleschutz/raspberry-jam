@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7fcd70567ab24c438d1b0c5cf627965, type: 3}
   m_Name: CoolDownReduction
   m_EditorClassIdentifier: 
+  Name: Cool Down Reduction
   Duration: 5
+  Icon: {fileID: 0}
   ReductionPercentage: 0.5

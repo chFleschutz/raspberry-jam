@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42acc64be6a70b4449be814f0aa73d4e, type: 3}
   m_Name: MajorHealthBuff
   m_EditorClassIdentifier: 
-  Duration: 1
+  Name: Major Health Buff
+  Duration: 0
+  Icon: {fileID: 0}
   HealthIncrease: 100
