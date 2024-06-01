@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Dash Boost
   Duration: 5
-  Icon: {fileID: 0}
+  Icon: {fileID: 6663573335021605044, guid: 4d6d3e529a32a4141bbac8264745777d, type: 3}
   boostPercentage: 2
