@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameOver : GameEventListener
+public class GameOver : MonoBehaviour, IGameEventListener
 {
     [SerializeField] private GameEvent PlayerDiedEvent;
     [SerializeField] private GameObject gameOverMenu;
@@ -21,7 +21,7 @@ public class GameOver : GameEventListener
         Application.Quit();
     }
 
-    public override void OnInvoke()
+    public void OnInvoke()
     {
         Debug.Log("GameOver: Player Died");
         

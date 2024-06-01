@@ -8,10 +8,10 @@ using UnityEngine;
 public class GameEvent : ScriptableObject
 {
     // List of Listeners listening to the event in general
-    private List<GameEventListener> listeners = new List<GameEventListener>();
+    private List<IGameEventListener> listeners = new();
 
     // List of Listeners listening only to the event when invoked by a certain source object
-    private Dictionary<Object, List<GameEventListener>> listenersOnSourceObject = new Dictionary<Object, List<GameEventListener>>();
+    private Dictionary<Object, List<IGameEventListener>> listenersOnSourceObject = new();
 
     /// <summary>
     /// Invokes all listeners without source object and those registered on given source object
@@ -21,13 +21,13 @@ public class GameEvent : ScriptableObject
     {
         if (listenersOnSourceObject.ContainsKey(sourceObject))
         {
-            foreach(GameEventListener listener in listenersOnSourceObject[sourceObject])
+            foreach(IGameEventListener listener in listenersOnSourceObject[sourceObject])
             {
                 listener.OnInvoke();
             }
         }
 
-        foreach (GameEventListener listener in listeners)
+        foreach (IGameEventListener listener in listeners)
         {
             listener.OnInvoke();
         }
@@ -37,7 +37,7 @@ public class GameEvent : ScriptableObject
     /// Registers the given Listener to the GameEvent
     /// </summary>
     /// <param name="listener"></param>
-    public void RegisterListener(GameEventListener listener)
+    public void RegisterListener(IGameEventListener listener)
     {
         listeners.Add(listener);
     }
@@ -46,7 +46,7 @@ public class GameEvent : ScriptableObject
     /// Unregisters the given Listner from the GameEvent
     /// </summary>
     /// <param name="listener"></param>
-    public void UnregisterListener(GameEventListener listener)
+    public void UnregisterListener(IGameEventListener listener)
     {
         if(!listeners.Contains(listener))
         {
@@ -61,7 +61,7 @@ public class GameEvent : ScriptableObject
     /// </summary>
     /// <param name="sourceObject"></param>
     /// <param name="listener"></param>
-    public void RegisterListenerOnSourceObject(Object sourceObject, GameEventListener listener)
+    public void RegisterListenerOnSourceObject(Object sourceObject, IGameEventListener listener)
     {
         if(listenersOnSourceObject.ContainsKey(sourceObject))
         {
@@ -69,7 +69,7 @@ public class GameEvent : ScriptableObject
         }
         else
         {
-            listenersOnSourceObject.Add(sourceObject, new List<GameEventListener> { listener });
+            listenersOnSourceObject.Add(sourceObject, new List<IGameEventListener> { listener });
         }
     }
 
@@ -78,7 +78,7 @@ public class GameEvent : ScriptableObject
     /// </summary>
     /// <param name="sourceObject"></param>
     /// <param name="listener"></param>
-    public void UnregisterListenerOnSourceObject(Object sourceObject, GameEventListener listener)
+    public void UnregisterListenerOnSourceObject(Object sourceObject, IGameEventListener listener)
     {
         if (!listenersOnSourceObject.ContainsKey(sourceObject))
         {

@@ -4,7 +4,7 @@ using UnityEngine;
 /// Base Class for all GameEventListeners using a single parameter
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public abstract class GameEventListener<T> : MonoBehaviour
+public interface IGameEventListener<T>
 {
-    public abstract void OnInvoke(T parameter);
+    public void OnInvoke(T parameter);
 }

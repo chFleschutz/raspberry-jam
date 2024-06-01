@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : GameEventListener
+public class PlayerController : MonoBehaviour, IGameEventListener
 {
     [SerializeField] private GameEvent PlayerDeathEvent;
 
@@ -10,7 +10,7 @@ public class PlayerController : GameEventListener
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private SurvivalPoints survivalPoints;
 
-    public override void OnInvoke()
+    public void OnInvoke()
     {
         playerMovement.enabled = false;
         survivalPoints.enabled = false;
