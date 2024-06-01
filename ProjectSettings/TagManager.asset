@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Obstacle
+  - Fuel
   layers:
   - Default
   - TransparentFX
