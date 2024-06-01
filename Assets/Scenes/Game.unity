@@ -153,6 +153,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onPlayerDamaged: {fileID: 11400000, guid: 81c9a0d618e78b341a75d47658118bbb, type: 2}
   playerHealth: {fileID: 1909620258}
+  damage: 10
+  logDamage: 0
 --- !u!4 &103210374
 Transform:
   m_ObjectHideFlags: 0
@@ -246,7 +248,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1412473496651454386, guid: 718a7db89db823a44a7308ad1d3411f7, type: 3}
       propertyPath: orthographic size
-      value: 20
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2505325233463701285, guid: 718a7db89db823a44a7308ad1d3411f7, type: 3}
+      propertyPath: borderDamage
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5101636556661991287, guid: 718a7db89db823a44a7308ad1d3411f7, type: 3}
       propertyPath: m_Name
