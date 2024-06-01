@@ -734,10 +734,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1076849797}
     - target: {fileID: -7620611339418453049, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
-      propertyPath: maxFuel
-      value: 2000
-      objectReference: {fileID: 0}
-    - target: {fileID: -7620611339418453049, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
       propertyPath: slider2
       value: 
       objectReference: {fileID: 79774155}

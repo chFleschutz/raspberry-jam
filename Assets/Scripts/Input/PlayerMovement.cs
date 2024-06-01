@@ -78,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (charging && charge < chargeMax && currentFuel > 0)
+        if (charging && charge < chargeMax && currentFuel > 0 && !onCooldown)
         {
             float deltaCharge = Time.deltaTime * chargeSpeed * chargeCurve.Evaluate(charge / chargeMax);
             charge += deltaCharge;
@@ -99,10 +99,10 @@ public class PlayerMovement : MonoBehaviour
             direction += knockbackDirection * knockbackPower * Time.deltaTime;
 
             Vector2 probablyPosition = new Vector2(transform.position.x, transform.position.y) + direction;
-            Vector2 predictedPositon = CollisionForecast.ForecastBox2D(gameObject, direction, Vector2.one, out hit);
-            transform.position = predictedPositon;
+            Vector2 predictedPosition = CollisionForecast.ForecastBox2D(gameObject, direction, Vector2.one, out hit);
+            transform.position = predictedPosition;
 
-            if (probablyPosition != predictedPositon)
+            if (probablyPosition != predictedPosition)
             {
                 movementDirection = Vector2.Reflect(movementDirection, hit.normal);
                 velocity *= 0.8f;
@@ -135,7 +135,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnCharge(InputAction.CallbackContext context)
     {
-        if(context.performed && !onCooldown)
+        if(context.performed)
         {
             charging = true;
         }

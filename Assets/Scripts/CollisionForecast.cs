@@ -120,7 +120,20 @@ public static class CollisionForecast
     /// <returns></returns>
     public static Vector2 ForecastCircle2D(GameObject sourceObject, Vector2 direction, float radius)
     {
-        return ForecastCapsule2D(sourceObject, sourceObject.transform.position, direction.normalized, direction.magnitude, new Vector2(radius, radius), CapsuleDirection2D.Vertical, 0, Physics2D.AllLayers);
+        RaycastHit2D hit = new RaycastHit2D();
+        return ForecastCapsule2D(sourceObject, sourceObject.transform.position, direction.normalized, direction.magnitude, new Vector2(radius, radius), CapsuleDirection2D.Vertical, 0, Physics2D.AllLayers, out hit);
+    }
+
+    /// <summary>
+    /// Shoots a Circle from the source objects position using the length of the direction as distance and returns the nearest hit point or the end of the check distance
+    /// </summary>
+    /// <param name="sourceObject"></param>
+    /// <param name="direction"></param>
+    /// <param name="radius"></param>
+    /// <returns></returns>
+    public static Vector2 ForecastCircle2D(GameObject sourceObject, Vector2 direction, float radius, out RaycastHit2D hit)
+    {
+        return ForecastCapsule2D(sourceObject, sourceObject.transform.position, direction.normalized, direction.magnitude, new Vector2(radius, radius), CapsuleDirection2D.Vertical, 0, Physics2D.AllLayers, out hit);
     }
 
     /// <summary>
@@ -132,7 +145,8 @@ public static class CollisionForecast
     /// <returns></returns>
     public static Vector2 ForecastCapsule2D(GameObject sourceObject, Vector2 direction, Vector2 size)
     {
-        return ForecastCapsule2D(sourceObject, sourceObject.transform.position, direction.normalized, direction.magnitude, size, CapsuleDirection2D.Vertical, 0, Physics2D.AllLayers);
+        RaycastHit2D hit = new RaycastHit2D();
+        return ForecastCapsule2D(sourceObject, sourceObject.transform.position, direction.normalized, direction.magnitude, size, CapsuleDirection2D.Vertical, 0, Physics2D.AllLayers, out hit);
     }
 
     /// <summary>
@@ -147,8 +161,9 @@ public static class CollisionForecast
     /// <param name="angle"></param>
     /// <param name="lm"></param>
     /// <returns></returns>
-    public static Vector2 ForecastCapsule2D(GameObject sourceObject, Vector2 origin, Vector2 direction, float distance, Vector2 size, CapsuleDirection2D extentDirection, float angle, LayerMask lm)
+    public static Vector2 ForecastCapsule2D(GameObject sourceObject, Vector2 origin, Vector2 direction, float distance, Vector2 size, CapsuleDirection2D extentDirection, float angle, LayerMask lm, out RaycastHit2D hit)
     {
+        hit = new RaycastHit2D();
         size *= 0.99f;
         RaycastHit2D[] hits = new RaycastHit2D[20];
         int hitCount;
@@ -164,13 +179,15 @@ public static class CollisionForecast
 
         RaycastHit2D closestHit = hits[0];
 
-        foreach (RaycastHit2D hit in hits)
+        for (int i = 0; i < hitCount; i++)
         {
-            if ((closestHit.point - origin).magnitude > (hit.point - origin).magnitude)
+            if ((closestHit.point - origin).magnitude > (hits[i].point - origin).magnitude)
                 continue;
 
-            closestHit = hit;
+            closestHit = hits[i];
         }
+
+        hit = closestHit;
 
         return origin + direction.normalized * closestHit.distance;
     }
