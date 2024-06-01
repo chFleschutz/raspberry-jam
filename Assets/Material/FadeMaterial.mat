@@ -68,10 +68,10 @@ Material:
     m_Floats:
     - _EnableExternalAlpha: 0
     - _Visibility: 2.13
-    - _bottom: 1
-    - _left: 1
-    - _right: 1
-    - _top: 1
+    - _bottom: 0
+    - _left: 0
+    - _right: 0
+    - _top: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
