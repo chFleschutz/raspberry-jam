@@ -9,8 +9,7 @@ public class PowerUpSpawn : MonoBehaviour
     [SerializeField] private GameEvent<PowerUp> powerUpDeactivatedEvent;
 
     [Header("Components")]
-    [SerializeField] private SpriteRenderer sprite;
-    [SerializeField] private Collider2D trigger;
+    [SerializeField] private GameObject visuals;
 
     [SerializeField] private PowerUp[] powerUps;
     private int finishCount = 0;
@@ -30,8 +29,7 @@ public class PowerUpSpawn : MonoBehaviour
     private IEnumerator PowerUpSequence(PowerUp powerUp, GameObject target)
     {
         powerUpActivatedEvent.Invoke(this, powerUp);
-        sprite.enabled = false;
-        trigger.enabled = false;
+        visuals.SetActive(false);
 
         powerUp.ApplyTo(target);
         yield return new WaitForSeconds(powerUp.Duration);
