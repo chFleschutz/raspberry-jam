@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Other")]
     [SerializeField] private float slowDown;
+    [SerializeField] Transform visuals;
     private Vector2 movementDirection;
     private float velocity;
      
@@ -128,6 +129,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (chargePoolSlider != null) 
             chargePoolSlider.value = currentFuel / maxFuel;
+
+        mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        Vector2 dir = (mousePosition - new Vector2(transform.position.x, transform.position.y)).normalized;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        visuals.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
     }
 
     public void OnMovement(InputAction.CallbackContext context)
@@ -145,7 +151,6 @@ public class PlayerMovement : MonoBehaviour
         if(context.canceled)
         {
             charging = false;
-            mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             movementDirection = new Vector3(mousePosition.x, mousePosition.y, 0) - transform.position;
         }
     }
