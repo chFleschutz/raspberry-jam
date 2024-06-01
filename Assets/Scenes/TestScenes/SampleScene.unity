@@ -737,6 +737,10 @@ PrefabInstance:
       propertyPath: slider2
       value: 
       objectReference: {fileID: 79774155}
+    - target: {fileID: 5595321865924062014, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.13
+      objectReference: {fileID: 0}
     - target: {fileID: 6149922470430357432, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1165,7 +1169,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1311252790
 Transform:
   m_ObjectHideFlags: 0
