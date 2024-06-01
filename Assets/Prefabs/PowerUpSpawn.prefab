@@ -133,6 +133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db4a061a2b0dfd64badaa2d1886ef787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerUpActivatedEvent: {fileID: 11400000, guid: 4c19f15aa90a1e644894376a3ef0d9fb, type: 2}
+  powerUpDeactivatedEvent: {fileID: 11400000, guid: 846ae6dc12f6e8b4f803846a549cb343, type: 2}
   sprite: {fileID: 8538920614939521287}
   trigger: {fileID: 7354126794211385141}
-  powerUp: {fileID: 0}
+  powerUps: []
