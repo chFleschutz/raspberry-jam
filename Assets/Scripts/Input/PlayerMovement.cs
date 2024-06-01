@@ -118,7 +118,7 @@ public class PlayerMovement : MonoBehaviour
                 knockbackPower = 0;
 
             if (velocity > 0) 
-                velocity -= Time.deltaTime + slowDown;
+                velocity -= Time.deltaTime * slowDown;
             else 
                 velocity = 0;
 
