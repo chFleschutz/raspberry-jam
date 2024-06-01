@@ -716,6 +716,10 @@ PrefabInstance:
       propertyPath: slider
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2619704952059084690, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
+      propertyPath: maxHealth
+      value: 193
+      objectReference: {fileID: 0}
     - target: {fileID: 6149922470430357432, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
       propertyPath: m_Name
       value: Player

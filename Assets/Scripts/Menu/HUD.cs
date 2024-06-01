@@ -55,7 +55,7 @@ public class HUD : MonoBehaviour, IGameEventListener<int>, IGameEventListener<fl
     // Health Event
     public void OnInvoke(float parameter)
     {
-        healthBar.value = parameter / 100f; // TODO: Use MaxHealth of the Player instead of 100
+        healthBar.value = parameter / PlayerController.Instance.HealthController.MaxHealth;
     }
 
     void Start()

@@ -10,6 +10,8 @@ public class Health : MonoBehaviour
 
     private float health = 100.0f;
 
+    public float MaxHealth => maxHealth;
+
     public void TakeDamage(float damage)
     {
         if (health <= 0)
