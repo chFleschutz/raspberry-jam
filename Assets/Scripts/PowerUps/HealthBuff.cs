@@ -8,11 +8,15 @@ public class HealthBuff : PowerUp
 {
     public int HealthIncrease = 0;
 
-    public override void Apply(GameObject target)
+    public override void ApplyTo(GameObject target)
     {
         if (target.TryGetComponent<Health>(out var health))
         {
             health.IncreaseHealth(HealthIncrease);
         }
+    }
+
+    public override void RemoveFrom(GameObject target)
+    {
     }
 }

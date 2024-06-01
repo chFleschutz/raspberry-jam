@@ -225,6 +225,72 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7c7e476e3885e44dbbc7192b7632397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &1169585729 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 7354126794211385141, guid: 1d9e9f0b512d72948a0869d0f4819ca2, type: 3}
+  m_PrefabInstance: {fileID: 6070512615298793618}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1443764711
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2974272484148299194, guid: 1d9e9f0b512d72948a0869d0f4819ca2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.2949724
+      objectReference: {fileID: 0}
+    - target: {fileID: 2974272484148299194, guid: 1d9e9f0b512d72948a0869d0f4819ca2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.5397747
+      objectReference: {fileID: 0}
+    - target: {fileID: 2974272484148299194, guid: 1d9e9f0b512d72948a0869d0f4819ca2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2974272484148299194, guid: 1d9e9f0b512d72948a0869d0f4819ca2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2974272484148299194, guid: 1d9e9f0b512d72948a0869d0f4819ca2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2974272484148299194, guid: 1d9e9f0b512d72948a0869d0f4819ca2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2974272484148299194, guid: 1d9e9f0b512d72948a0869d0f4819ca2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2974272484148299194, guid: 1d9e9f0b512d72948a0869d0f4819ca2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2974272484148299194, guid: 1d9e9f0b512d72948a0869d0f4819ca2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2974272484148299194, guid: 1d9e9f0b512d72948a0869d0f4819ca2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3032824009558613922, guid: 1d9e9f0b512d72948a0869d0f4819ca2, type: 3}
+      propertyPath: powerUp
+      value: 
+      objectReference: {fileID: 11400000, guid: 41ba706f49ca1a44c9edb743761332fd, type: 2}
+    - target: {fileID: 6393728635471296988, guid: 1d9e9f0b512d72948a0869d0f4819ca2, type: 3}
+      propertyPath: m_Name
+      value: PowerUpSpawn (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1d9e9f0b512d72948a0869d0f4819ca2, type: 3}
 --- !u!1001 &1462625799
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -353,10 +419,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6149922470430357432, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
       propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 6149922470430357432, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
-      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6205188391534315631, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
@@ -509,6 +571,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3032824009558613922, guid: 1d9e9f0b512d72948a0869d0f4819ca2, type: 3}
+      propertyPath: powerUp
+      value: 
+      objectReference: {fileID: 11400000, guid: 27fd68ca49198bc498d736d39152df1f, type: 2}
+    - target: {fileID: 3032824009558613922, guid: 1d9e9f0b512d72948a0869d0f4819ca2, type: 3}
+      propertyPath: collider
+      value: 
+      objectReference: {fileID: 1169585729}
     - target: {fileID: 6393728635471296988, guid: 1d9e9f0b512d72948a0869d0f4819ca2, type: 3}
       propertyPath: m_Name
       value: PowerUpSpawn
@@ -528,3 +598,4 @@ SceneRoots:
   - {fileID: 6070512615298793618}
   - {fileID: 3412517802143719696}
   - {fileID: 1807720604063623479}
+  - {fileID: 1443764711}

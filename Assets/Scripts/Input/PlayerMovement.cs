@@ -29,6 +29,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 mousePosition;
     private Rigidbody2D rb;
 
+    public float ChargePower { get => chargePower; set => chargePower = value; }
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
