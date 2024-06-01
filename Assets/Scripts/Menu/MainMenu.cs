@@ -5,8 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [Header("High Score")]
     [SerializeField] private TMPro.TextMeshProUGUI highScore;
-    [SerializeField] private Texture2D cursorTexture;
+
+    [Header("Cursor")]
+    [SerializeField] private Sprite cursorSprite;
+    [SerializeField] private Vector2 cursorHotspot = Vector2.zero;
+
+    private Texture2D cursorTexture;
 
     public void Play()
     {
@@ -21,6 +27,21 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         highScore.text = "High Score: " + PlayerPrefs.GetInt("HighScore", 0);
-        Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
+
+        // Set Cursor
+        if (cursorSprite != null)
+        {
+            cursorTexture = new Texture2D((int)cursorSprite.textureRect.width, (int)cursorSprite.textureRect.height, TextureFormat.RGBA32, false);
+            for (int y = 0; y < cursorTexture.height; y++)
+            {
+                for (int x = 0; x < cursorTexture.width; x++)
+                {
+                    cursorTexture.SetPixel(x, y, cursorSprite.texture.GetPixel((int)cursorSprite.textureRect.x + x, (int)cursorSprite.textureRect.y + y));
+                }
+            }
+            cursorTexture.Apply();
+        }
+
+        Cursor.SetCursor(cursorTexture, cursorHotspot, CursorMode.Auto);
     }
 }
