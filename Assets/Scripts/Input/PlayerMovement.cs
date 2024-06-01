@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 mousePosition;
     private Rigidbody2D rb;
 
+    public float CooldownTime { get => cooldownTime; set => cooldownTime = value; }
     public float ChargePower { get => chargePower; set => chargePower = value; }
 
     void Start()
