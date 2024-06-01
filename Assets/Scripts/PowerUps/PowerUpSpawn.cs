@@ -6,17 +6,20 @@ public class PowerUpSpawn : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer sprite;
     [SerializeField] private Collider2D trigger;
-    [SerializeField] private PowerUp powerUp;
+    [SerializeField] private PowerUp[] powerUps;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player"))
             return;
 
-        StartCoroutine(PowerUpSequence(other.gameObject));
+        foreach (var powerUp in powerUps)
+        {
+            StartCoroutine(PowerUpSequence(powerUp, other.gameObject));
+        }
     }
 
-    private IEnumerator PowerUpSequence(GameObject target)
+    private IEnumerator PowerUpSequence(PowerUp powerUp, GameObject target)
     {
         sprite.enabled = false;
         trigger.enabled = false;
@@ -24,7 +27,7 @@ public class PowerUpSpawn : MonoBehaviour
         powerUp.ApplyTo(target);
         yield return new WaitForSeconds(powerUp.Duration);
         powerUp.RemoveFrom(target);
-        
+
         Destroy(gameObject);
     }
 }
