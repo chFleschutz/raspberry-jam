@@ -23,7 +23,7 @@ public class BorderController : MonoBehaviour
     private void Start()
     {
         borderInset = Vector2.one * 2;
-        player = GameObject.FindWithTag("Player").transform;
+        player = PlayerController.Instance.transform;
 
         if(player == null)
         {
@@ -36,7 +36,7 @@ public class BorderController : MonoBehaviour
             return;
         }
 
-        healthController = player.GetComponent<Health>();
+        healthController = PlayerController.Instance.HealthController;
 
         UpdateBorders(screenSize - borderInset);
         CheckPlayerPosition();
