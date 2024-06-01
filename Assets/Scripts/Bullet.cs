@@ -3,10 +3,12 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float radius;
+    [SerializeField] private float lifespan = 5;
     private GameObject sourceShooter;
     private float damage;
     private float speed;
     private Vector2 direction;
+    private float lifetime = 0;
 
     public void Initialize(GameObject source, float bulletDamage, Vector2 bulletDirection, float bulletSpeed)
     {
@@ -18,6 +20,11 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
+        if (lifetime < lifespan)
+            lifetime += Time.deltaTime;
+        else
+            Destroy(gameObject);
+
         RaycastHit2D hit;
         Vector2 probablePosition = new Vector2(transform.position.x, transform.position.y) + direction * speed * Time.deltaTime;
         Vector2 predictedPosition = CollisionForecast.ForecastCircle2D(gameObject, direction * speed * Time.deltaTime, radius, out hit);

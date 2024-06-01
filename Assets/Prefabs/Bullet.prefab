@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 0.25
+  lifespan: 5
 --- !u!1 &3205025605277081067
 GameObject:
   m_ObjectHideFlags: 0
