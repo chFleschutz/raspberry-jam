@@ -78,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (charging && charge < chargeMax && currentFuel > 0)
+        if (charging && charge < chargeMax && currentFuel > 0 && !onCooldown)
         {
             float deltaCharge = Time.deltaTime * chargeSpeed * chargeCurve.Evaluate(charge / chargeMax);
             charge += deltaCharge;
@@ -135,7 +135,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnCharge(InputAction.CallbackContext context)
     {
-        if(context.performed && !onCooldown)
+        if(context.performed)
         {
             charging = true;
         }

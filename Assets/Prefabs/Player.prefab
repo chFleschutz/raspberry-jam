@@ -82,7 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e13c6de5abc729f47b98915c82b28832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownTime: 0.5
+  cooldownTime: 1
   chargeCurve:
     serializedVersion: 2
     m_Curve:
@@ -140,10 +140,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 3972719906093398590, guid: bbf736785c6260440b0489a85792a051, type: 3}
-  cooldownTime: 3
+  cooldownTime: 0.5
   bulletDamage: 40
   bulletSpeed: 10
-  knockbackStrength: 0
+  knockbackStrength: 1.5
 --- !u!114 &5109521706241027140
 MonoBehaviour:
   m_ObjectHideFlags: 0

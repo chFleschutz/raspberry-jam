@@ -737,14 +737,6 @@ PrefabInstance:
       propertyPath: slider2
       value: 
       objectReference: {fileID: 79774155}
-    - target: {fileID: 6005399850824490453, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
-      propertyPath: cooldownTime
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6005399850824490453, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
-      propertyPath: knockbackStrength
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 6149922470430357432, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
       propertyPath: m_Name
       value: Player
