@@ -28,18 +28,15 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 inputDirection;
     private Vector2 mousePosition;
     private Rigidbody2D rb;
-    // Start is called before the first frame update
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         onCooldown = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
-
         if (inputDirection != Vector2.zero)
             transform.position = CollisionForecast.ForecastBox2D(gameObject, inputDirection * Time.deltaTime * speed, Vector2.one);
 
@@ -57,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
         {
             charge += Time.deltaTime * chargeSpeed * chargeCurve.Evaluate(charge/chargeMax);
             velocity = charge;
-            Debug.Log(charge);
+            //Debug.Log(charge);
         }
 
         if (!charging && velocity > 0)
@@ -77,7 +74,8 @@ public class PlayerMovement : MonoBehaviour
             velocity -= Time.deltaTime + slowDown;
         }
 
-        slider.value = charge/chargeMax;
+        if (slider != null)
+            slider.value = charge/chargeMax;
     }
 
     public void OnMovement(InputAction.CallbackContext context)
