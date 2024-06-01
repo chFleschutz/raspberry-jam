@@ -2,15 +2,16 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour, IGameEventListener
 {
-    [SerializeField] private float speed;
-    [SerializeField] private float knockbackSlowdown;
-    [SerializeField] private float knockbackResistance;
-    [SerializeField] private ChargeFuel fuelCapsule;
-    [SerializeField] private GameEvent onDeath;
-    private float knockbackPower;
-    private Transform player;
+    [Header("Base States")]
+    [SerializeField] protected float speed;
+    [SerializeField] protected float knockbackSlowdown;
+    [SerializeField] protected float knockbackResistance;
+    [SerializeField] protected ChargeFuel fuelCapsule;
+    [SerializeField] protected GameEvent onDeath;
+    protected float knockbackPower;
+    protected Transform player;
     private Health healthController;
-    private Vector2 knockback;
+    protected Vector2 knockback;
 
     public void SetKnockback(Vector2 knockbackDirection, float knockbackStrength)
     {
@@ -23,7 +24,7 @@ public class EnemyBase : MonoBehaviour, IGameEventListener
         healthController.TakeDamage(damage);
     }
 
-    private void Start()
+    protected void Start()
     {
         healthController = GetComponent<Health>();
 
@@ -44,7 +45,7 @@ public class EnemyBase : MonoBehaviour, IGameEventListener
     }
 
 
-    private void Update()
+    protected void Update()
     {
         Move(player.position);
     }
@@ -54,7 +55,7 @@ public class EnemyBase : MonoBehaviour, IGameEventListener
         onDeath.UnregisterListenerOnSourceObject(healthController, this);
     }
 
-    private void Move(Vector2 goal)
+    protected virtual void Move(Vector2 goal)
     {
         Vector2 direction = goal - new Vector2(transform.position.x, transform.position.y);
         Vector2 adjustedDirection = (direction.normalized * speed + knockback.normalized * knockbackPower) * Time.deltaTime;
