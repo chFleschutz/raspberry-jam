@@ -47,7 +47,6 @@ public class EnemyBase : MonoBehaviour, IGameEventListener
     private void Update()
     {
         Move(player.position);
-        healthController.TakeDamage(Time.deltaTime * 10.0f);
     }
 
     private void OnDestroy()
