@@ -99,10 +99,10 @@ public class PlayerMovement : MonoBehaviour
             direction += knockbackDirection * knockbackPower * Time.deltaTime;
 
             Vector2 probablyPosition = new Vector2(transform.position.x, transform.position.y) + direction;
-            Vector2 predictedPositon = CollisionForecast.ForecastBox2D(gameObject, direction, Vector2.one, out hit);
-            transform.position = predictedPositon;
+            Vector2 predictedPosition = CollisionForecast.ForecastBox2D(gameObject, direction, Vector2.one, out hit);
+            transform.position = predictedPosition;
 
-            if (probablyPosition != predictedPositon)
+            if (probablyPosition != predictedPosition)
             {
                 movementDirection = Vector2.Reflect(movementDirection, hit.normal);
                 velocity *= 0.8f;

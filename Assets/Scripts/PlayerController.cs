@@ -9,11 +9,13 @@ public class PlayerController : MonoBehaviour, IGameEventListener
     public PlayerMovement PlayerMovement;
     public Health HealthController;
     public SurvivalPoints SurvivalPoints;
+    public PlayerAttack PlayerAttack;
 
     public void OnInvoke()
     {
         PlayerMovement.enabled = false;
         SurvivalPoints.enabled = false;
+        PlayerAttack.enabled = false;
     }
 
     private void Awake()

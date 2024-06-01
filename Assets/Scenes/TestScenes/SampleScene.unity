@@ -734,13 +734,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1076849797}
     - target: {fileID: -7620611339418453049, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
-      propertyPath: maxFuel
-      value: 2000
-      objectReference: {fileID: 0}
-    - target: {fileID: -7620611339418453049, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
       propertyPath: slider2
       value: 
       objectReference: {fileID: 79774155}
+    - target: {fileID: 6005399850824490453, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
+      propertyPath: cooldownTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6005399850824490453, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
+      propertyPath: knockbackStrength
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6149922470430357432, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
       propertyPath: m_Name
       value: Player
