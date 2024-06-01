@@ -321,6 +321,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1866380825107283791}
+  - component: {fileID: 6191301055021876182}
   m_Layer: 0
   m_Name: MainMenu
   m_TagString: Untagged
@@ -345,6 +346,20 @@ Transform:
   - {fileID: 3034910316612709722}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6191301055021876182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1867716629169995807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09e6c7f53980de34fb41b2efc080f393, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highScore: {fileID: 1341562634613031561}
+  cursorTexture: {fileID: 2800000, guid: 87d28997275f30943a4bf1cdc156bb73, type: 3}
 --- !u!1 &1934450842678966165
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,7 +512,6 @@ GameObject:
   - component: {fileID: 5412728236099354578}
   - component: {fileID: 6417207024923814697}
   - component: {fileID: 4034290951691174972}
-  - component: {fileID: 5979307908985642312}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -568,19 +582,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5979307908985642312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2286866028315225057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09e6c7f53980de34fb41b2efc080f393, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  highScore: {fileID: 1341562634613031561}
 --- !u!1 &4240933826490277320
 GameObject:
   m_ObjectHideFlags: 0
@@ -1586,7 +1587,7 @@ PrefabInstance:
     - target: {fileID: 7620824269988445973, guid: 5529cd024323ee443a6a183aa71540b9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 5979307908985642312}
+      objectReference: {fileID: 6191301055021876182}
     - target: {fileID: 7620824269988445973, guid: 5529cd024323ee443a6a183aa71540b9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1739,7 +1740,7 @@ PrefabInstance:
     - target: {fileID: 7620824269988445973, guid: 5529cd024323ee443a6a183aa71540b9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 5979307908985642312}
+      objectReference: {fileID: 6191301055021876182}
     - target: {fileID: 7620824269988445973, guid: 5529cd024323ee443a6a183aa71540b9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
