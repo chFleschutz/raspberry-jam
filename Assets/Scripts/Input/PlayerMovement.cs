@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Knockback")]
     [SerializeField] private float knockbackSlowDown;
+    [SerializeField] private float knockbackResistance;
     private Vector2 knockbackDirection;
     private float knockbackPower;
 
@@ -39,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
     public void AddKnockback(Vector2 direction, float power)
     {
         knockbackDirection = direction.normalized;
-        knockbackPower = power;
+        knockbackPower = Mathf.Log(power, knockbackResistance);
     }
 
     private void Start()
@@ -94,8 +95,16 @@ public class PlayerMovement : MonoBehaviour
                     hit.transform.GetComponent<EnemyBase>().SetKnockback(direction, velocity);
             }
 
-            knockbackPower -= Time.deltaTime * knockbackSlowDown;
-            velocity -= Time.deltaTime + slowDown;
+            if (knockbackPower > 0)
+                knockbackPower -= Time.deltaTime * knockbackSlowDown;
+            else 
+                knockbackPower = 0;
+
+            if (velocity > 0) 
+                velocity -= Time.deltaTime + slowDown;
+            else 
+                velocity = 0;
+
         }
 
         if (slider != null)

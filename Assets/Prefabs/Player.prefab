@@ -170,7 +170,9 @@ MonoBehaviour:
   chargeSpeed: 1000
   chargeMax: 1000
   chargePower: 0.25
-  slowDown: 0.5
+  knockbackSlowDown: 20
+  knockbackResistance: 1.15
+  slowDown: 2
   slider: {fileID: 0}
   speed: 4
 --- !u!114 &5109521706241027140
@@ -248,8 +250,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerDeathEvent: {fileID: 11400000, guid: d698c7f256d1ead4e98a7c06df94bf42, type: 2}
-  playerMovement: {fileID: -7620611339418453049}
-  survivalPoints: {fileID: 6000953725630362315}
+  PlayerMovement: {fileID: -7620611339418453049}
+  HealthController: {fileID: 2619704952059084690}
+  SurvivalPoints: {fileID: 6000953725630362315}
 --- !u!50 &8805680191045033455
 Rigidbody2D:
   serializedVersion: 4
