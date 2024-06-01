@@ -1,10 +1,12 @@
 using UnityEngine;
 
-public class EnemyBase : MonoBehaviour
+public class EnemyBase : MonoBehaviour, IGameEventListener
 {
     [SerializeField] private float speed;
     [SerializeField] private float knockbackSlowdown;
-    [SerializeField] public float knockbackResistance;
+    [SerializeField] private float knockbackResistance;
+    [SerializeField] private ChargeFuel fuelCapsule;
+    [SerializeField] private GameEvent onDeath;
     private float knockbackPower;
     private Transform player;
     private Health healthController;
@@ -37,12 +39,20 @@ public class EnemyBase : MonoBehaviour
         {
             Debug.LogError("Enemy: Please tag player as player");
         }
+
+        onDeath.RegisterListenerOnSourceObject(healthController, this);
     }
 
 
     private void Update()
     {
         Move(player.position);
+        healthController.TakeDamage(Time.deltaTime * 10.0f);
+    }
+
+    private void OnDestroy()
+    {
+        onDeath.UnregisterListenerOnSourceObject(healthController, this);
     }
 
     private void Move(Vector2 goal)
@@ -55,5 +65,12 @@ public class EnemyBase : MonoBehaviour
         {
             knockbackPower -= knockbackSlowdown * Time.deltaTime;
         }
+    }
+
+    void IGameEventListener.OnInvoke()
+    {
+        ChargeFuel fuel = Instantiate(fuelCapsule);
+        fuel.transform.position = transform.position;
+        Destroy(gameObject);
     }
 }

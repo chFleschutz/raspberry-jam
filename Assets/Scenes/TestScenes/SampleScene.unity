@@ -2051,13 +2051,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 896094975401515335, guid: 25973acecf6db5d48a9f254717c20901, type: 3}
+      propertyPath: onDeath
+      value: 
+      objectReference: {fileID: 11400000, guid: f87c12e73432f0742b80a0620ef19d72, type: 2}
+    - target: {fileID: 896094975401515335, guid: 25973acecf6db5d48a9f254717c20901, type: 3}
+      propertyPath: fuelCapsule
+      value: 
+      objectReference: {fileID: 7466107299986149323, guid: 9211b888d550c784e8e3ef6cc0a2d826, type: 3}
     - target: {fileID: 8850790802643789541, guid: 25973acecf6db5d48a9f254717c20901, type: 3}
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 8850790802643789541, guid: 25973acecf6db5d48a9f254717c20901, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
