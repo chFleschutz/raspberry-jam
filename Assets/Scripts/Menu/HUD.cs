@@ -11,7 +11,7 @@ public class HUD : MonoBehaviour, IGameEventListener<int>, IGameEventListener<fl
 
     [Header("HUD Elements")]
     [SerializeField] private TMPro.TextMeshProUGUI scoreText;
-    [SerializeField] private HealthBar healthBar;
+    [SerializeField] private Slider healthBar;
     [SerializeField] private GameObject powerUpPanel;
 
     [Header("PowerUp Prefab")]
@@ -55,7 +55,7 @@ public class HUD : MonoBehaviour, IGameEventListener<int>, IGameEventListener<fl
     // Health Event
     public void OnInvoke(float parameter)
     {
-        healthBar.SetHealth(parameter / 100); // TODO: Use MaxHealth of the Player instead of 100
+        healthBar.value = parameter / 100f; // TODO: Use MaxHealth of the Player instead of 100
     }
 
     void Start()

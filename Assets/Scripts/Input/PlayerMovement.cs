@@ -34,8 +34,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 movementDirection;
     private float velocity;
      
-    [SerializeField] private Slider slider;
-    [SerializeField] private Slider slider2;
+    [SerializeField] private Slider chargePowerSlider;
+    [SerializeField] private Slider chargePoolSlider;
     [SerializeField] private float speed;
     private Vector2 inputDirection;
     private Vector2 mousePosition;
@@ -123,9 +123,11 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-        if (slider != null) slider.value = charge/chargeMax;
+        if (chargePowerSlider != null) 
+            chargePowerSlider.value = charge/chargeMax;
 
-        if (slider2 != null) slider2.value = currentFuel / maxFuel;
+        if (chargePoolSlider != null) 
+            chargePoolSlider.value = currentFuel / maxFuel;
     }
 
     public void OnMovement(InputAction.CallbackContext context)
