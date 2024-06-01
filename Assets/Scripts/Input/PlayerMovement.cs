@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float chargeSpeed;
     [SerializeField] private float chargeMax;
     [SerializeField] private float chargePower;
+    [SerializeField] private float chargeFuelCost;
     private bool charging;
     private float charge;
 
@@ -23,6 +24,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float knockbackResistance;
     private Vector2 knockbackDirection;
     private float knockbackPower;
+
+    [Header("Fuel")]
+    [SerializeField] private float maxFuel;
+    private float currentFuel;
 
     [Header("Other")]
     [SerializeField] private float slowDown;
@@ -37,6 +42,11 @@ public class PlayerMovement : MonoBehaviour
     public float CooldownTime { get => cooldownTime; set => cooldownTime = value; }
     public float ChargePower { get => chargePower; set => chargePower = value; }
 
+    public void AddFuel(float fuel)
+    {
+        currentFuel += fuel;
+    }
+
     public void AddKnockback(Vector2 direction, float power)
     {
         knockbackDirection = direction.normalized;
@@ -45,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        currentFuel = maxFuel;
         onCooldown = false;
     }
 
