@@ -57,7 +57,6 @@ public class PlayerMovement : MonoBehaviour
         {
             charge += Time.deltaTime * chargeSpeed * chargeCurve.Evaluate(charge/chargeMax);
             velocity = charge;
-            //Debug.Log(charge);
         }
 
         if (!charging && velocity > 0)

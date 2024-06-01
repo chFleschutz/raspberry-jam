@@ -53,7 +53,6 @@ public class CameraMovement : MonoBehaviour
         else
         {
             goalPositions.RemoveAt(0);
-            distance = (new Vector3(goalPositions[0].x, goalPositions[0].y, 0) - transform.position).magnitude;
         }
     }
 }
