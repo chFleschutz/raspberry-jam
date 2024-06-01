@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 103210374}
   - component: {fileID: 103210373}
   m_Layer: 0
-  m_Name: DamageDealer
+  m_Name: Cheater
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,8 +153,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onPlayerDamaged: {fileID: 11400000, guid: 81c9a0d618e78b341a75d47658118bbb, type: 2}
   playerHealth: {fileID: 1909620258}
-  damage: 10
+  playerMovement: {fileID: 1909620264}
+  damageAmount: 10
   logDamage: 0
+  healAmount: 20
+  fuelAmount: 500
 --- !u!4 &103210374
 Transform:
   m_ObjectHideFlags: 0
@@ -892,6 +895,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7c7e476e3885e44dbbc7192b7632397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1909620264 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -7620611339418453049, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
+  m_PrefabInstance: {fileID: 1821329417}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e13c6de5abc729f47b98915c82b28832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1909620266 stripped
