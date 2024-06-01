@@ -1,19 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IGameEventListener
 {
+    public static PlayerController Instance;
     [SerializeField] private GameEvent PlayerDeathEvent;
 
     [Header("Player Components")]
-    [SerializeField] private PlayerMovement playerMovement;
-    [SerializeField] private SurvivalPoints survivalPoints;
+    public PlayerMovement PlayerMovement;
+    public Health HealthController;
+    public SurvivalPoints SurvivalPoints;
 
     public void OnInvoke()
     {
-        playerMovement.enabled = false;
-        survivalPoints.enabled = false;
+        PlayerMovement.enabled = false;
+        SurvivalPoints.enabled = false;
+    }
+
+    private void Awake()
+    {
+        if (Instance != null)
+            Debug.LogError("Player: Multiple Player Controller");
+
+        Instance = this;
     }
 
     private void Start()

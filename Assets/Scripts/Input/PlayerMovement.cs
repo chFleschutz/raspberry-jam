@@ -18,6 +18,12 @@ public class PlayerMovement : MonoBehaviour
     private bool charging;
     private float charge;
 
+    [Header("Knockback")]
+    [SerializeField] private float knockbackSlowDown;
+    [SerializeField] private float knockbackResistance;
+    private Vector2 knockbackDirection;
+    private float knockbackPower;
+
     [Header("Other")]
     [SerializeField] private float slowDown;
     private Vector2 movementDirection;
@@ -27,18 +33,22 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed;
     private Vector2 inputDirection;
     private Vector2 mousePosition;
-    private Rigidbody2D rb;
 
     public float CooldownTime { get => cooldownTime; set => cooldownTime = value; }
     public float ChargePower { get => chargePower; set => chargePower = value; }
 
-    void Start()
+    public void AddKnockback(Vector2 direction, float power)
     {
-        rb = GetComponent<Rigidbody2D>();
+        knockbackDirection = direction.normalized;
+        knockbackPower = Mathf.Log(power, knockbackResistance);
+    }
+
+    private void Start()
+    {
         onCooldown = false;
     }
 
-    void Update()
+    private void Update()
     {
         if (inputDirection != Vector2.zero)
             transform.position = CollisionForecast.ForecastBox2D(gameObject, inputDirection * Time.deltaTime * speed, Vector2.one);
@@ -56,16 +66,26 @@ public class PlayerMovement : MonoBehaviour
         if (charging && charge < chargeMax)
         {
             charge += Time.deltaTime * chargeSpeed * chargeCurve.Evaluate(charge/chargeMax);
-            velocity = charge;
+            //velocity = charge;
         }
 
-        if (!charging && velocity > 0)
+        if(!charging && charge > 0)
+        {
+            velocity = charge;
+            charge = 0;
+            onCooldown = true;
+        }
+
+        if (velocity > 0 || knockbackPower > 0)
         {
             RaycastHit2D hit;
             Vector2 direction = movementDirection.normalized * Time.deltaTime * velocity * chargePower;
+            direction += knockbackDirection * knockbackPower * Time.deltaTime;
+
             Vector2 probablyPosition = new Vector2(transform.position.x, transform.position.y) + direction;
             Vector2 predictedPositon = CollisionForecast.ForecastBox2D(gameObject, direction, Vector2.one, out hit);
             transform.position = predictedPositon;
+
             if (probablyPosition != predictedPositon)
             {
                 movementDirection = Vector2.Reflect(movementDirection, hit.normal);
@@ -74,9 +94,17 @@ public class PlayerMovement : MonoBehaviour
                 if (hit.collider.tag == "Enemy")
                     hit.transform.GetComponent<EnemyBase>().SetKnockback(direction, velocity);
             }
-            charge = 0;
-            onCooldown = true;
-            velocity -= Time.deltaTime + slowDown;
+
+            if (knockbackPower > 0)
+                knockbackPower -= Time.deltaTime * knockbackSlowDown;
+            else 
+                knockbackPower = 0;
+
+            if (velocity > 0) 
+                velocity -= Time.deltaTime + slowDown;
+            else 
+                velocity = 0;
+
         }
 
         if (slider != null)
