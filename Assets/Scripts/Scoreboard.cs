@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Scoreboard : GameEventListenerInt
+public class Scoreboard : MonoBehaviour, IGameEventListener<int>
 {
     // Event is called every time the score changes with the new score
     [SerializeField] private GameEventInt onScoreChanged;
@@ -27,7 +27,7 @@ public class Scoreboard : GameEventListenerInt
         onScoreChanged.Invoke(this, score);
     }
 
-    public override void OnInvoke(int points)
+    public void OnInvoke(int points)
     {
         Add(points);
     }

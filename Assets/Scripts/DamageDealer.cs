@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageDealer : GameEventListenerFloat
+public class DamageDealer : MonoBehaviour, IGameEventListener<float>
 {
     [SerializeField] private GameEventFloat onPlayerDamaged;
     [SerializeField] private Health playerHealth;
 
-    public override void OnInvoke(float health)
+    public void OnInvoke(float health)
     {
         Debug.Log("DamageDealer: " + health);
     }
