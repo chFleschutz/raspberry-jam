@@ -7,10 +7,13 @@ public class PointSupplier : GameEventListenerInt
 {
     [SerializeField] private GameEventInt onScoreChanged;
     [SerializeField] private GameEventInt onPointsAwarded;
+    [SerializeField] private int points = 10;
+    [SerializeField] private bool logScore = false;
 
     public override void OnInvoke(int score)
     {
-        Debug.Log("Point Supplier yells: score " + score);
+        if (logScore)
+            Debug.Log("Point Supplier yells: score " + score);
     }
 
     void Start()
@@ -22,7 +25,7 @@ public class PointSupplier : GameEventListenerInt
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            onPointsAwarded.Invoke(this, 10);
+            onPointsAwarded.Invoke(this, points);
         }
     }
 

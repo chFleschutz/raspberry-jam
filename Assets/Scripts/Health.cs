@@ -22,6 +22,13 @@ public class Health : MonoBehaviour
             onDeath.Invoke(this);
     }
 
+    public void IncreaseHealth(float amount)
+    {
+        health += amount;
+        health = Mathf.Min(health, maxHealth);
+        onHealthChanged.Invoke(this, health);
+    }
+
     void Start()
     {
         health = maxHealth;
