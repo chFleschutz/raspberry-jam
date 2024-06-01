@@ -70,6 +70,9 @@ public class PlayerMovement : MonoBehaviour
             {
                 movementDirection = Vector2.Reflect(movementDirection, hit.normal);
                 velocity *= 0.8f;
+
+                if (hit.collider.tag == "Enemy")
+                    hit.transform.GetComponent<EnemyBase>().SetKnockback(direction, velocity);
             }
             charge = 0;
             onCooldown = true;
