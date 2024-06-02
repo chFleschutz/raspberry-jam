@@ -706,6 +706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 417751c99d43f3e46bed4165db9013d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerDeathEvent: {fileID: 11400000, guid: d698c7f256d1ead4e98a7c06df94bf42, type: 2}
   speedOverTime:
     serializedVersion: 2
     m_Curve:

@@ -18,7 +18,7 @@ public class Health : MonoBehaviour
             return;
 
         health -= damage;
-        onHealthChanged.Invoke(this, health);
+        onHealthChanged.Invoke(this, -health);
 
         if (health <= 0)
             onDeath.Invoke(this);
