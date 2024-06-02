@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 663563756ebbf0343840dbe41013d5dc, type: 3}
-  m_Name: DashBoost
+  m_Script: {fileID: 11500000, guid: 3d87d24e1636db24aadeb5188b3f8cf8, type: 3}
+  m_Name: MajorFuelRefill
   m_EditorClassIdentifier: 
-  Name: Dash Boost
-  Duration: 5
-  Icon: {fileID: 6663573335021605044, guid: 4d6d3e529a32a4141bbac8264745777d, type: 3}
-  boostPercentage: 1.5
+  Name: Major Fuel Refill
+  Duration: 0
+  Icon: {fileID: 21300000, guid: 8fb92d0e8cc4c2e4494f16feeb907ad8, type: 3}
+  fuelAmount: 2000

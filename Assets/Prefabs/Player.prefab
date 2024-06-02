@@ -301,37 +301,28 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.0016708374
-      value: 0.8089638
-      inSlope: -0.021795524
-      outSlope: -0.021795524
+      time: 0.0010697655
+      value: 1.0005789
+      inSlope: 0.0026239138
+      outSlope: 0.0026239138
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.075894125
     - serializedVersion: 3
-      time: 0.35607916
-      value: 0.20612913
-      inSlope: 0.02250378
-      outSlope: 0.02250378
+      time: 0.9995706
+      value: 0.10050522
+      inSlope: -0.11047799
+      outSlope: -0.11047799
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1.001648
-      value: 1.0047312
-      inSlope: -0.104514815
-      outSlope: -0.104514815
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
+      inWeight: 0.075182855
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   chargeSpeed: 1000
-  chargeMax: 1000
+  chargeMax: 450
   chargePower: 0.25
   chargeFuelCost: 1
   effect: {fileID: 2136736616915912207}
@@ -340,8 +331,8 @@ MonoBehaviour:
   knockbackSlowDown: 20
   knockbackResistance: 1.15
   maxFuel: 2000
-  slowDown: 2
-  visuals: {fileID: 5595321865924062014}
+  slowDown: 1000
+  visuals: {fileID: 6205188391534315631}
   chargePowerSlider: {fileID: 0}
   chargePoolSlider: {fileID: 0}
   speed: 4
