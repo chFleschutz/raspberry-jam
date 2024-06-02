@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AttackingEnemy : EnemyBase
@@ -20,7 +21,12 @@ public class AttackingEnemy : EnemyBase
     {
         Vector2 direction = goal - new Vector2(transform.position.x, transform.position.y);
 
-        if(cooldown > 0)
+        if (visuals != null)
+        {
+            visuals.rotation = Quaternion.Euler(new Vector3(0, 0, (Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg) - 90));
+        }
+
+        if (cooldown > 0)
         {
             cooldown -= Time.deltaTime;
         }

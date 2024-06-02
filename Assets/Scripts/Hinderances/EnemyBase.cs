@@ -12,6 +12,7 @@ public class EnemyBase : MonoBehaviour, IGameEventListener
     protected Transform player;
     private Health healthController;
     protected Vector2 knockback;
+    protected Transform visuals;
 
     public void SetKnockback(Vector2 knockbackDirection, float knockbackStrength)
     {
@@ -24,7 +25,7 @@ public class EnemyBase : MonoBehaviour, IGameEventListener
         healthController.TakeDamage(damage);
     }
 
-    protected void Start()
+    protected virtual void Start()
     {
         healthController = GetComponent<Health>();
 
@@ -40,6 +41,8 @@ public class EnemyBase : MonoBehaviour, IGameEventListener
         {
             Debug.LogError("Enemy: Please tag player as player");
         }
+
+        visuals = transform.GetChild(0);
 
         onDeath.RegisterListenerOnSourceObject(healthController, this);
     }
@@ -60,6 +63,11 @@ public class EnemyBase : MonoBehaviour, IGameEventListener
         Vector2 direction = goal - new Vector2(transform.position.x, transform.position.y);
         Vector2 adjustedDirection = (direction.normalized * speed + knockback.normalized * knockbackPower) * Time.deltaTime;
         transform.position = CollisionForecast.ForecastBox2D(gameObject, adjustedDirection, Vector2.one);
+
+        if(visuals != null)
+        {
+            visuals.rotation = Quaternion.Euler(new Vector3(0, 0, (Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg) - 90));
+        }
 
         if(knockbackPower > 0)
         {

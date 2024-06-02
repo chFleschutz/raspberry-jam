@@ -50,15 +50,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2519048918839268215, guid: 25973acecf6db5d48a9f254717c20901, type: 3}
       propertyPath: m_Color.b
-      value: 0.16078429
+      value: 0.4669811
       objectReference: {fileID: 0}
     - target: {fileID: 2519048918839268215, guid: 25973acecf6db5d48a9f254717c20901, type: 3}
       propertyPath: m_Color.g
-      value: 0.19046041
+      value: 0.49346653
       objectReference: {fileID: 0}
     - target: {fileID: 2519048918839268215, guid: 25973acecf6db5d48a9f254717c20901, type: 3}
       propertyPath: m_Color.r
-      value: 0.7921569
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8850790802643789541, guid: 25973acecf6db5d48a9f254717c20901, type: 3}
       propertyPath: m_Name
@@ -99,5 +99,6 @@ MonoBehaviour:
   attackRange: 2
   attackPrepareTime: 1
   attackSpeed: 50
+  attackKnockback: 0
   slowdownAfterAttack: 10
   attackCooldown: 2
