@@ -34,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
     private float currentFuel;
 
     [Header("Other")]
+    [SerializeField] private float bounceImpact;
     [SerializeField] private float slowDown;
     [SerializeField] Transform visuals;
     private Vector2 movementDirection;
@@ -117,7 +118,7 @@ public class PlayerMovement : MonoBehaviour
             if (probablyPosition != predictedPosition)
             {
                 movementDirection = Vector2.Reflect(movementDirection, hit.normal);
-                velocity *= 0.8f;
+                velocity *= bounceImpact;
 
                 if (hit.collider.tag == "Enemy")
                     hit.transform.GetComponent<EnemyBase>().SetKnockback(direction, velocity);
