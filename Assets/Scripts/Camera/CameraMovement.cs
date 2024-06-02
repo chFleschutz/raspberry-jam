@@ -8,6 +8,7 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private float speed;
     private float distance;
     private List<Vector2> goalPositions = new List<Vector2>();
+    private int currentGoalIndex = 0;
 
     public void AddGoalDirecion(Vector2 direction)
     {
@@ -46,13 +47,14 @@ public class CameraMovement : MonoBehaviour
         if(distance == 0) 
             distance = (new Vector3(goalPositions[0].x, goalPositions[0].y, 0) - transform.position).magnitude;
 
-        Vector3 direction = new Vector3(goalPositions[0].x, goalPositions[0].y, 0) - new Vector3(transform.position.x, transform.position.y, 0);
+        var goalPosition = goalPositions[currentGoalIndex];
+        Vector3 direction = new Vector3(goalPosition.x, goalPosition.y) - new Vector3(transform.position.x, transform.position.y, 0);
 
         if (!(direction.x < 0.01f && direction.x > -0.1f) || !(direction.y < 0.1f && direction.y > -0.1f))
             transform.position += direction.normalized * speed * Time.deltaTime * speedOverTime.Evaluate(direction.magnitude/distance);
         else
         {
-            goalPositions.RemoveAt(0);
+            currentGoalIndex = (currentGoalIndex + 1) % goalPositions.Count;
         }
     }
 }
