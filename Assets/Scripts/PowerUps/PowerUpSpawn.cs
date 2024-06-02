@@ -10,35 +10,43 @@ public class PowerUpSpawn : MonoBehaviour
 
     [Header("Components")]
     [SerializeField] private GameObject visuals;
+    [SerializeField] private Collider2D trigger;
 
+    [Header("Settings")]
+    [SerializeField] private float respawnTime = 10f;
     [SerializeField] private PowerUp[] powerUps;
-    private int finishCount = 0;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player"))
             return;
 
-        finishCount = 0;
-        foreach (var powerUp in powerUps)
-        {
-            StartCoroutine(PowerUpSequence(powerUp, other.gameObject));
-        }
+        StartCoroutine(PowerUpSequence(other.gameObject));
     }
 
-    private IEnumerator PowerUpSequence(PowerUp powerUp, GameObject target)
+    private IEnumerator PowerUpSequence(GameObject target)
     {
+        Activate(false);
+
+        // Apply a random power up
+        var powerUp = powerUps[Random.Range(0, powerUps.Length)];
         powerUpActivatedEvent.Invoke(this, powerUp);
-        visuals.SetActive(false);
-
         powerUp.ApplyTo(target);
-        yield return new WaitForSeconds(powerUp.Duration);
-        powerUp.RemoveFrom(target);
 
+        yield return new WaitForSeconds(powerUp.Duration);
+
+        // Remove the power up
+        powerUp.RemoveFrom(target);
         powerUpDeactivatedEvent.Invoke(this, powerUp);
 
-        finishCount++;
-        if (finishCount == powerUps.Length)
-            Destroy(gameObject);
+        // Respawn the power up
+        yield return new WaitForSeconds(respawnTime);
+        Activate(true);
+    }
+
+    private void Activate(bool active)
+    {
+        trigger.enabled = active;
+        visuals.SetActive(active);
     }
 }
