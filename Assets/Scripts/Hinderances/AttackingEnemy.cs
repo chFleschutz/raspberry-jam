@@ -21,6 +21,9 @@ public class AttackingEnemy : EnemyBase
     {
         Vector2 direction = goal - new Vector2(transform.position.x, transform.position.y);
 
+        if (direction.magnitude > detectionRadius)
+            return;
+
         if (visuals != null)
         {
             visuals.rotation = Quaternion.Euler(new Vector3(0, 0, (Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg) - 90));

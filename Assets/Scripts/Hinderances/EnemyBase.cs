@@ -8,6 +8,7 @@ public class EnemyBase : MonoBehaviour, IGameEventListener
     [SerializeField] protected float knockbackResistance;
     [SerializeField] protected ChargeFuel fuelCapsule;
     [SerializeField] protected GameEvent onDeath;
+    [SerializeField] protected float detectionRadius;
     protected float knockbackPower;
     protected Transform player;
     private Health healthController;
@@ -61,6 +62,10 @@ public class EnemyBase : MonoBehaviour, IGameEventListener
     protected virtual void Move(Vector2 goal)
     {
         Vector2 direction = goal - new Vector2(transform.position.x, transform.position.y);
+
+        if(direction.magnitude > detectionRadius)
+            return;
+
         Vector2 adjustedDirection = (direction.normalized * speed + knockback.normalized * knockbackPower) * Time.deltaTime;
         transform.position = CollisionForecast.ForecastBox2D(gameObject, adjustedDirection, Vector2.one);
 
