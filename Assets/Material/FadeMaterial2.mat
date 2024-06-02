@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FadeMaterial
+  m_Name: FadeMaterial2
   m_Shader: {fileID: -6465566751694194690, guid: b01dcd7ae39cafe41a471d199191b986, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -67,7 +67,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _EnableExternalAlpha: 0
-    - _Visibility: 4.27
+    - _Visibility: 2.13
     - _bottom: 0
     - _left: 0
     - _right: 0
