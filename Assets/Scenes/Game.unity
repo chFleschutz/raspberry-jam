@@ -863,14 +863,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -7620611339418453049, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
-      propertyPath: slider
-      value: 
-      objectReference: {fileID: 170452190}
-    - target: {fileID: -7620611339418453049, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
-      propertyPath: slider2
-      value: 
-      objectReference: {fileID: 1487073033}
-    - target: {fileID: -7620611339418453049, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
       propertyPath: chargePoolSlider
       value: 
       objectReference: {fileID: 1487073033}
@@ -920,10 +912,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6205188391534315631, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6547368528362411064, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
-      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
