@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d87d24e1636db24aadeb5188b3f8cf8, type: 3}
+  m_Name: MajorFuelRefill
+  m_EditorClassIdentifier: 
+  Name: Major Fuel Refill
+  Duration: 0
+  Icon: {fileID: 21300000, guid: 8fb92d0e8cc4c2e4494f16feeb907ad8, type: 3}
+  fuelAmount: 2000
