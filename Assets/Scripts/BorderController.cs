@@ -34,7 +34,6 @@ public class BorderController : MonoBehaviour
 
     private void Start()
     {
-        borderInset = Vector2.one * 2;
         player = PlayerController.Instance.transform;
 
         if(player == null)
