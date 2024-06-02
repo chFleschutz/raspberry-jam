@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -15,7 +16,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float chargeSpeed;
     [SerializeField] private float chargeMax;
     [SerializeField] private float chargePower;
-    [SerializeField] private float chargeFuelCost;
+    [SerializeField] private float chargeFuelCost = 1;
+    [SerializeField] private VisualEffect effect;
+    [SerializeField] private float trailLength;
+    [SerializeField] private float jitterStrength;
     private bool charging;
     private float charge;
 
@@ -62,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
     {
         currentFuel = maxFuel;
         onCooldown = false;
+        effect.Stop();
     }
 
     private void Update()
@@ -71,19 +76,25 @@ public class PlayerMovement : MonoBehaviour
 
         if(onCooldown)
         {
+            Blink();
             cooldown += Time.deltaTime;
             if(cooldown > cooldownTime)
             {
                 cooldown = 0;
+                visuals.GetComponent<SpriteRenderer>().color = Color.white;
                 onCooldown = false;
             }
         }
 
-        if (charging && charge < chargeMax && currentFuel > 0 && !onCooldown)
+        if (charging && !onCooldown)
         {
-            float deltaCharge = Time.deltaTime * chargeSpeed * chargeCurve.Evaluate(charge / chargeMax);
-            charge += deltaCharge;
-            currentFuel -= deltaCharge;
+            if (charge < chargeMax && currentFuel > 0)
+            {
+                float deltaCharge = Time.deltaTime * chargeSpeed * chargeCurve.Evaluate(charge / chargeMax);
+                charge += deltaCharge;
+                currentFuel -= deltaCharge * chargeFuelCost;
+            }
+            Effects();
         }
 
         if(!charging && charge > 0)
@@ -151,7 +162,39 @@ public class PlayerMovement : MonoBehaviour
         if(context.canceled)
         {
             charging = false;
-            movementDirection = new Vector3(mousePosition.x, mousePosition.y, 0) - transform.position;
+            if(!onCooldown)
+                movementDirection = new Vector3(mousePosition.x, mousePosition.y, 0) - transform.position;
+
+            effect.Stop();
+            visuals.localPosition = Vector2.zero;
         }
+    }
+
+    private void Effects()
+    {
+        effect.SetFloat("YVelocity", charge / chargeMax * -trailLength);
+        effect.Play();
+
+        Vector2 newPosition = new Vector2(Random.value * charge / chargeMax * jitterStrength, Random.value * charge / chargeMax * jitterStrength);
+        visuals.localPosition = newPosition;
+    }
+
+    [SerializeField] private float maxBlinkTime = 0.2f;
+    [SerializeField] private Color blinkColor = Color.gray;
+    private float blinkTime = 0;
+    private void Blink()
+    {
+        if (blinkTime > 0)
+        {
+            blinkTime -= Time.deltaTime;
+            if(blinkTime < maxBlinkTime * 0.5f)
+                visuals.GetComponent<SpriteRenderer>().color = Color.white;
+        }
+        else
+        {
+            blinkTime = maxBlinkTime;
+            visuals.GetComponent<SpriteRenderer>().color = blinkColor;
+        }
+
     }
 }

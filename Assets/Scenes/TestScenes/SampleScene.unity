@@ -730,18 +730,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -7620611339418453049, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
-      propertyPath: slider
-      value: 
-      objectReference: {fileID: 1076849797}
-    - target: {fileID: -7620611339418453049, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
-      propertyPath: slider2
-      value: 
-      objectReference: {fileID: 79774155}
-    - target: {fileID: -7620611339418453049, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
-      propertyPath: visuals
-      value: 
-      objectReference: {fileID: 1429175058}
-    - target: {fileID: -7620611339418453049, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
       propertyPath: chargePoolSlider
       value: 
       objectReference: {fileID: 79774155}
@@ -749,21 +737,17 @@ PrefabInstance:
       propertyPath: chargePowerSlider
       value: 
       objectReference: {fileID: 1076849797}
-    - target: {fileID: 5595321865924062014, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.13
-      objectReference: {fileID: 0}
     - target: {fileID: 6149922470430357432, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6205188391534315631, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.1598669
+      value: -6.92
       objectReference: {fileID: 0}
     - target: {fileID: 6205188391534315631, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.05713009
+      value: -1.73
       objectReference: {fileID: 0}
     - target: {fileID: 6205188391534315631, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
       propertyPath: m_LocalPosition.z
@@ -796,10 +780,6 @@ PrefabInstance:
     - target: {fileID: 6205188391534315631, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7497471320396376840, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
-      propertyPath: m_SortingOrder
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1218,20 +1198,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   borderDamage: 10
-  transforms:
-  - {fileID: 1120049466}
-  - {fileID: 1307326521}
-  - {fileID: 1999060106}
-  - {fileID: 491419786}
+  effects: []
+  borderInset: {x: 0, y: 0}
+  effectScale: 0
 --- !u!4 &1369240470 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2374954340611912418, guid: 92c9759463ad5c94f8bcdb420b0fc83e, type: 3}
   m_PrefabInstance: {fileID: 5020918684992511744}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1429175058 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5595321865924062014, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
-  m_PrefabInstance: {fileID: 1002934672}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1476935262
 GameObject:
