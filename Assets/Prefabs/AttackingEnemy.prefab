@@ -99,6 +99,6 @@ MonoBehaviour:
   attackRange: 2
   attackPrepareTime: 1
   attackSpeed: 50
-  attackKnockback: 0
-  slowdownAfterAttack: 10
-  attackCooldown: 2
+  attackKnockback: 10
+  slowdownAfterAttack: 500
+  attackCooldown: 4
