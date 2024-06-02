@@ -39,6 +39,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform visuals;
     private Vector2 movementDirection;
     private float velocity;
+
+    [Header("Sound")]
+    [SerializeField] private AudioSource chargeSound;
+    [SerializeField] private AudioSource bounceSound;
+    [SerializeField] private float soundOverlap;
+    private float soundtime;
      
     [SerializeField] private Slider chargePowerSlider;
     [SerializeField] private Slider chargePoolSlider;
@@ -67,6 +73,8 @@ public class PlayerMovement : MonoBehaviour
     {
         currentFuel = maxFuel;
         onCooldown = false;
+        chargeSound.Stop();
+        bounceSound.Stop();
         effect.Stop();
     }
 
@@ -117,6 +125,12 @@ public class PlayerMovement : MonoBehaviour
 
             if (probablyPosition != predictedPosition)
             {
+                if(soundtime > soundOverlap)
+                {
+                    bounceSound.Play();
+                    soundtime = 0;
+                }
+
                 movementDirection = Vector2.Reflect(movementDirection, hit.normal);
                 velocity *= bounceImpact;
 
@@ -134,6 +148,11 @@ public class PlayerMovement : MonoBehaviour
             else 
                 velocity = 0;
 
+        }
+
+        if(soundtime < soundOverlap)
+        {
+            soundtime += Time.deltaTime;
         }
 
         if (chargePowerSlider != null) 
@@ -167,6 +186,7 @@ public class PlayerMovement : MonoBehaviour
                 movementDirection = new Vector3(mousePosition.x, mousePosition.y, 0) - transform.position;
 
             effect.Stop();
+            chargeSound.Stop();
             visuals.localPosition = Vector2.zero;
         }
     }
@@ -178,6 +198,14 @@ public class PlayerMovement : MonoBehaviour
 
         Vector2 newPosition = new Vector2(Random.value * charge / chargeMax * jitterStrength, Random.value * charge / chargeMax * jitterStrength);
         visuals.localPosition = newPosition;
+
+        if(chargeSound.time > chargeSound.clip.length * 0.95f)
+        {
+            chargeSound.time = chargeSound.clip.length * 0.75f;
+        }
+
+        if(!chargeSound.isPlaying)
+            chargeSound.Play();
     }
 
     [SerializeField] private float maxBlinkTime = 0.2f;

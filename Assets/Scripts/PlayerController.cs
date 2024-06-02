@@ -1,9 +1,11 @@
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour, IGameEventListener
+public class PlayerController : MonoBehaviour, IGameEventListener, IGameEventListener<float>
 {
     public static PlayerController Instance;
     [SerializeField] private GameEvent PlayerDeathEvent;
+    [SerializeField] private GameEventFloat playerHurtEvent;
+    [SerializeField] private AudioSource hurtSound;
 
     [Header("Player Components")]
     public PlayerMovement PlayerMovement;
@@ -23,16 +25,26 @@ public class PlayerController : MonoBehaviour, IGameEventListener
         if (Instance != null)
             Debug.LogError("Player: Multiple Player Controller");
 
+        hurtSound.Stop();
+
         Instance = this;
     }
 
     private void Start()
     {
+        playerHurtEvent.RegisterListener(this);
         PlayerDeathEvent.RegisterListener(this);
     }
 
     private void OnDestroy()
     {
+        playerHurtEvent.UnregisterListener(this);
         PlayerDeathEvent.UnregisterListener(this);
+    }
+
+    void IGameEventListener<float>.OnInvoke(float parameter)
+    {
+        if(!hurtSound.isPlaying && parameter < 0)
+            hurtSound.Play();
     }
 }
