@@ -332,10 +332,12 @@ MonoBehaviour:
   knockbackResistance: 1.15
   maxFuel: 2000
   slowDown: 1000
-  visuals: {fileID: 6205188391534315631}
+  visuals: {fileID: 5595321865924062014}
   chargePowerSlider: {fileID: 0}
   chargePoolSlider: {fileID: 0}
   speed: 4
+  maxBlinkTime: 0.2
+  blinkColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &6005399850824490453
 MonoBehaviour:
   m_ObjectHideFlags: 0
