@@ -95,6 +95,7 @@ MonoBehaviour:
   knockbackResistance: 1.15
   fuelCapsule: {fileID: 7466107299986149323, guid: 9211b888d550c784e8e3ef6cc0a2d826, type: 3}
   onDeath: {fileID: 11400000, guid: f87c12e73432f0742b80a0620ef19d72, type: 2}
+  detectionRadius: 15
   attackDamage: 0
   attackRange: 2
   attackPrepareTime: 1

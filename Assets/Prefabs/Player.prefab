@@ -412,7 +412,7 @@ MonoBehaviour:
   chargeSpeed: 1000
   chargeMax: 450
   chargePower: 0.25
-  chargeFuelCost: 0
+  chargeFuelCost: 1
   effect: {fileID: 2136736616915912207}
   trailLength: 20
   jitterStrength: 0.15
@@ -443,8 +443,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 3972719906093398590, guid: bbf736785c6260440b0489a85792a051, type: 3}
-  cooldownTime: 0.5
-  bulletDamage: 40
+  cooldownTime: 0.2
+  bulletDamage: 20
   bulletSpeed: 10
   knockbackStrength: 1.5
 --- !u!114 &5109521706241027140

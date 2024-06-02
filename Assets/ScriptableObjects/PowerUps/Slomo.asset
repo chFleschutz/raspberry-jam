@@ -15,4 +15,4 @@ MonoBehaviour:
   Name: Slooomooo
   Duration: 1
   Icon: {fileID: 6687641280360898181, guid: a1b1758dd2955234783b01afa7fe3f5a, type: 3}
-  TimeScale: 0.2
+  TimeScale: 0.5
