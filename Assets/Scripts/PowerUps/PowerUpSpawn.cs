@@ -11,10 +11,16 @@ public class PowerUpSpawn : MonoBehaviour
     [Header("Components")]
     [SerializeField] private GameObject visuals;
     [SerializeField] private Collider2D trigger;
+    [SerializeField] private AudioSource pickUpSound;
 
     [Header("Settings")]
     [SerializeField] private float respawnTime = 10f;
     [SerializeField] private PowerUp[] powerUps;
+
+    private void Start()
+    {
+        pickUpSound.Stop();
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -26,6 +32,7 @@ public class PowerUpSpawn : MonoBehaviour
 
     private IEnumerator PowerUpSequence(GameObject target)
     {
+        pickUpSound.Play();
         Activate(false);
 
         // Apply a random power up
