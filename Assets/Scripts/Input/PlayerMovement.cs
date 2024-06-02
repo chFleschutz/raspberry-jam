@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float chargeMax;
     [SerializeField] private float chargePower;
     [SerializeField] private float chargeFuelCost;
+    [SerializeField] private VisualEffect effect;
+    [SerializeField] private float trailLength;
     private bool charging;
     private float charge;
 
@@ -62,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
     {
         currentFuel = maxFuel;
         onCooldown = false;
+        effect.Stop();
     }
 
     private void Update()
@@ -84,6 +88,8 @@ public class PlayerMovement : MonoBehaviour
             float deltaCharge = Time.deltaTime * chargeSpeed * chargeCurve.Evaluate(charge / chargeMax);
             charge += deltaCharge;
             currentFuel -= deltaCharge;
+            effect.SetFloat("YVelocity", charge / chargeMax * -trailLength);
+            effect.Play();
         }
 
         if(!charging && charge > 0)
@@ -91,6 +97,7 @@ public class PlayerMovement : MonoBehaviour
             velocity = charge;
             charge = 0;
             onCooldown = true;
+            
         }
 
         if (velocity > 0 || knockbackPower > 0)
@@ -150,6 +157,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(context.canceled)
         {
+            effect.Stop();
             charging = false;
             movementDirection = new Vector3(mousePosition.x, mousePosition.y, 0) - transform.position;
         }
