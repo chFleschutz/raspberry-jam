@@ -54,6 +54,9 @@ public class AttackingEnemy : EnemyBase
 
         RaycastHit2D hit;
         Vector2 adjustedDirection = (direction.normalized * currentSpeed + knockback.normalized * knockbackPower) * Time.deltaTime;
+        if (adjustedDirection.magnitude < 0.01f)
+            return;
+
         transform.position = CollisionForecast.ForecastBox2D(gameObject, adjustedDirection, Vector2.one, out hit);
 
         if(currentSpeed > speed)

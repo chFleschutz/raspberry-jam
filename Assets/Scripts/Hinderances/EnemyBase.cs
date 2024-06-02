@@ -67,6 +67,9 @@ public class EnemyBase : MonoBehaviour, IGameEventListener
             return;
 
         Vector2 adjustedDirection = (direction.normalized * speed + knockback.normalized * knockbackPower) * Time.deltaTime;
+        if (adjustedDirection.magnitude < 0.01f)
+            return;
+
         transform.position = CollisionForecast.ForecastBox2D(gameObject, adjustedDirection, Vector2.one);
 
         if(visuals != null)
