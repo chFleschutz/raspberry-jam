@@ -230,11 +230,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aacf5ff25b8542740b4997b0162f31d5, type: 3}
---- !u!58 &159646421 stripped
-CircleCollider2D:
-  m_CorrespondingSourceObject: {fileID: 7354126794211385141, guid: 1d9e9f0b512d72948a0869d0f4819ca2, type: 3}
-  m_PrefabInstance: {fileID: 1356723997}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &170452190 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3340380558114359796, guid: 5e2cc8095fa866349b2aadf987c6b884, type: 3}
@@ -359,26 +354,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3032824009558613922, guid: 1d9e9f0b512d72948a0869d0f4819ca2, type: 3}
-      propertyPath: trigger
-      value: 
-      objectReference: {fileID: 159646421}
-    - target: {fileID: 3032824009558613922, guid: 1d9e9f0b512d72948a0869d0f4819ca2, type: 3}
-      propertyPath: powerUps.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3032824009558613922, guid: 1d9e9f0b512d72948a0869d0f4819ca2, type: 3}
-      propertyPath: powerUps.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 91db9e63e201c2c4e83ef02f097a7cb2, type: 2}
-    - target: {fileID: 3032824009558613922, guid: 1d9e9f0b512d72948a0869d0f4819ca2, type: 3}
-      propertyPath: powerUps.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: 41ba706f49ca1a44c9edb743761332fd, type: 2}
-    - target: {fileID: 3032824009558613922, guid: 1d9e9f0b512d72948a0869d0f4819ca2, type: 3}
-      propertyPath: powerUps.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: 47508f07ed9d9e0409fe1905f94a3dc3, type: 2}
     - target: {fileID: 6393728635471296988, guid: 1d9e9f0b512d72948a0869d0f4819ca2, type: 3}
       propertyPath: m_Name
       value: PowerUpSpawn
