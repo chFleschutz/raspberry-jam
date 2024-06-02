@@ -57,7 +57,9 @@ public class AttackingEnemy : EnemyBase
         if (adjustedDirection.magnitude < 0.01f)
             return;
 
-        transform.position = CollisionForecast.ForecastBox2D(gameObject, adjustedDirection, Vector2.one, out hit);
+        Vector2 newPos = CollisionForecast.ForecastBox2D(gameObject, adjustedDirection, Vector2.one, out hit);
+        if (newPos.x > 0 || newPos.x < 0)
+            transform.position = newPos;
 
         if(currentSpeed > speed)
         {
