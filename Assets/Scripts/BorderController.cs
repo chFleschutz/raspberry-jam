@@ -5,9 +5,9 @@ using UnityEngine.VFX;
 public class BorderController : MonoBehaviour
 {
     [SerializeField] private float borderDamage;
-    [SerializeField] private List<Transform> transforms = new List<Transform>();
     [SerializeField] private List<VisualEffect> effects = new List<VisualEffect>();
-    private Vector2 borderInset;
+    [SerializeField] private Vector2 borderInset;
+    [SerializeField] private float effectScale;
     private Vector2 screenSize;
     private Transform player;
     private Health healthController;
@@ -42,11 +42,6 @@ public class BorderController : MonoBehaviour
             Debug.LogError("Border: Please tag player as player");
             return;
         }
-        else if (transforms.Count <= 0)
-        {
-            Debug.LogError("Camera: Please assign the border transforms in the inspector");
-            return;
-        }
         else if (effects.Count <= 0)
         {
             Debug.LogError("Camera: Please assign the border effects in the inspector");
@@ -66,11 +61,6 @@ public class BorderController : MonoBehaviour
             Debug.LogError("Border: Please tag player as player");
             return;
         }
-        else if (transforms.Count <= 0)
-        {
-            Debug.LogError("Camera: Please assign the border transforms in the inspector");
-            return;
-        }
 
         UpdateBorders(screenSize - borderInset);
         CheckPlayerPosition();
@@ -85,21 +75,19 @@ public class BorderController : MonoBehaviour
         Vector3 cameraPosition = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, 0);
         for (int i = 0; i < 4; i++)
         {
-            Vector2 vel = effects[i].GetVector2("VelocityDirection").normalized * (diff * 2);
+            Vector2 vel = effects[i].GetVector2("VelocityDirection").normalized * (diff * 2f * effectScale + Vector2.one);
             effects[i].SetVector2("VelocityDirection", vel);
             if (i < 2)
             {
-                transforms[i].localScale = new Vector3(screenSize.x * 2, diff.y, 1);
-                float y = (i % 2 == 0 ? 1 : -1) * (halfBorderSize.y + diff.y * 0.5f);
-                transforms[i].position = cameraPosition + new Vector3(0, y, 0);
-                effects[i].transform.position = cameraPosition + new Vector3(0, y * 1.1f, 0);
+                effects[i].SetVector2("WallSize", new Vector2(screenSize.x * 2, effects[i].GetVector2("WallSize").y));
+                float y = (i % 2 == 0 ? 1 : -1) * (screenSize.y + 0.5f);
+                effects[i].transform.position = cameraPosition + new Vector3(0, y, 0);
             }
             else
             {
-                transforms[i].localScale = new Vector3(diff.x, screenSize.y * 2, 1);
-                float x = (i % 2 == 0 ? -1 : 1) * (halfBorderSize.x + diff.x * 0.5f);
-                transforms[i].position = cameraPosition + new Vector3(x, 0, 0);
-                effects[i].transform.position = cameraPosition + new Vector3(x * 1.1f, 0, 0);
+                effects[i].SetVector2("WallSize", new Vector2(effects[i].GetVector2("WallSize").x, screenSize.y * 2));
+                float x = (i % 2 == 0 ? -1 : 1) * (screenSize.x + 0.5f);
+                effects[i].transform.position = cameraPosition + new Vector3(x, 0, 0);
             }
 
         }

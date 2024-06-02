@@ -16,9 +16,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float chargeSpeed;
     [SerializeField] private float chargeMax;
     [SerializeField] private float chargePower;
-    [SerializeField] private float chargeFuelCost;
+    [SerializeField] private float chargeFuelCost = 1;
     [SerializeField] private VisualEffect effect;
     [SerializeField] private float trailLength;
+    [SerializeField] private float jitterStrength;
     private bool charging;
     private float charge;
 
@@ -83,13 +84,15 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (charging && charge < chargeMax && currentFuel > 0 && !onCooldown)
+        if (charging && !onCooldown)
         {
-            float deltaCharge = Time.deltaTime * chargeSpeed * chargeCurve.Evaluate(charge / chargeMax);
-            charge += deltaCharge;
-            currentFuel -= deltaCharge;
-            effect.SetFloat("YVelocity", charge / chargeMax * -trailLength);
-            effect.Play();
+            if (charge < chargeMax && currentFuel > 0)
+            {
+                float deltaCharge = Time.deltaTime * chargeSpeed * chargeCurve.Evaluate(charge / chargeMax);
+                charge += deltaCharge;
+                currentFuel -= deltaCharge * chargeFuelCost;
+            }
+            Effects();
         }
 
         if(!charging && charge > 0)
@@ -157,9 +160,19 @@ public class PlayerMovement : MonoBehaviour
 
         if(context.canceled)
         {
-            effect.Stop();
             charging = false;
             movementDirection = new Vector3(mousePosition.x, mousePosition.y, 0) - transform.position;
+            effect.Stop();
+            visuals.localPosition = Vector2.zero;
         }
+    }
+
+    private void Effects()
+    {
+        effect.SetFloat("YVelocity", charge / chargeMax * -trailLength);
+        effect.Play();
+
+        Vector2 newPosition = new Vector2(Random.value * charge / chargeMax * jitterStrength, Random.value * charge / chargeMax * jitterStrength);
+        visuals.localPosition = newPosition;
     }
 }
