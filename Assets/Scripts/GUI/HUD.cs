@@ -20,8 +20,6 @@ public class HUD : MonoBehaviour, IGameEventListener<int>, IGameEventListener<fl
 
     public void AddPowerUp(PowerUp powerUp)
     {
-        Debug.Log("Adding PowerUp");
-
         if (powerUpObjects.ContainsKey(powerUp))
             return;
 
@@ -37,8 +35,6 @@ public class HUD : MonoBehaviour, IGameEventListener<int>, IGameEventListener<fl
 
     public void RemovePowerUp(PowerUp powerUp)
     {
-        Debug.Log("Removing PowerUp");
-
         if (!powerUpObjects.ContainsKey(powerUp))
             return;
 
@@ -55,7 +51,7 @@ public class HUD : MonoBehaviour, IGameEventListener<int>, IGameEventListener<fl
     // Health Event
     public void OnInvoke(float parameter)
     {
-        healthBar.value = parameter / PlayerController.Instance.HealthController.MaxHealth;
+        healthBar.value = Mathf.Abs(parameter) / PlayerController.Instance.HealthController.MaxHealth;
     }
 
     void Start()
