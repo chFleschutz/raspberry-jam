@@ -955,6 +955,10 @@ PrefabInstance:
       propertyPath: borderDamage
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4409526560591811645, guid: 718a7db89db823a44a7308ad1d3411f7, type: 3}
+      propertyPath: playerDeathEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: d698c7f256d1ead4e98a7c06df94bf42, type: 2}
     - target: {fileID: 5101636556661991287, guid: 718a7db89db823a44a7308ad1d3411f7, type: 3}
       propertyPath: m_Name
       value: Main Camera
