@@ -871,14 +871,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1487073033}
     - target: {fileID: -7620611339418453049, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
-      propertyPath: visuals
-      value: 
-      objectReference: {fileID: 1909620266}
-    - target: {fileID: -7620611339418453049, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
-      propertyPath: slowDown
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: -7620611339418453049, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
       propertyPath: chargePoolSlider
       value: 
       objectReference: {fileID: 1487073033}
@@ -886,10 +878,6 @@ PrefabInstance:
       propertyPath: chargePowerSlider
       value: 
       objectReference: {fileID: 170452190}
-    - target: {fileID: -7620611339418453049, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
-      propertyPath: knockbackSlowDown
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 6149922470430357432, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
       propertyPath: m_Name
       value: Player
@@ -965,11 +953,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e13c6de5abc729f47b98915c82b28832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1909620266 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6205188391534315631, guid: e53785b09c8f9b1499c04befd8163030, type: 3}
-  m_PrefabInstance: {fileID: 1821329417}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1712451355765355658
 PrefabInstance:
   m_ObjectHideFlags: 0
