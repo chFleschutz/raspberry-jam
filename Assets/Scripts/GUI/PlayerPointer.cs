@@ -33,8 +33,8 @@ public class PlayerPointer : MonoBehaviour
         pointer.gameObject.SetActive(true);
 
         Vector3 direction = player.transform.position - cam.transform.position;
-        float x = Mathf.Clamp(direction.x, screenMinX + size.x, screenMaxX - size.y);
-        float y = Mathf.Clamp(direction.y, screenMinY + size.y, screenMaxY - size.y);
+        float x = cam.transform.position.x + Mathf.Clamp(direction.x, screenMinX + size.x, screenMaxX - size.y);
+        float y = cam.transform.position.y + Mathf.Clamp(direction.y, screenMinY + size.y, screenMaxY - size.y);
 
         pointer.position = new Vector3(x, y, 0);
 
