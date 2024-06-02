@@ -76,10 +76,12 @@ public class PlayerMovement : MonoBehaviour
 
         if(onCooldown)
         {
+            Blink();
             cooldown += Time.deltaTime;
             if(cooldown > cooldownTime)
             {
                 cooldown = 0;
+                visuals.GetComponent<SpriteRenderer>().color = Color.white;
                 onCooldown = false;
             }
         }
@@ -100,7 +102,6 @@ public class PlayerMovement : MonoBehaviour
             velocity = charge;
             charge = 0;
             onCooldown = true;
-            
         }
 
         if (velocity > 0 || knockbackPower > 0)
@@ -161,7 +162,9 @@ public class PlayerMovement : MonoBehaviour
         if(context.canceled)
         {
             charging = false;
-            movementDirection = new Vector3(mousePosition.x, mousePosition.y, 0) - transform.position;
+            if(!onCooldown)
+                movementDirection = new Vector3(mousePosition.x, mousePosition.y, 0) - transform.position;
+
             effect.Stop();
             visuals.localPosition = Vector2.zero;
         }
@@ -174,5 +177,24 @@ public class PlayerMovement : MonoBehaviour
 
         Vector2 newPosition = new Vector2(Random.value * charge / chargeMax * jitterStrength, Random.value * charge / chargeMax * jitterStrength);
         visuals.localPosition = newPosition;
+    }
+
+    [SerializeField] private float maxBlinkTime = 0.2f;
+    [SerializeField] private Color blinkColor = Color.gray;
+    private float blinkTime = 0;
+    private void Blink()
+    {
+        if (blinkTime > 0)
+        {
+            blinkTime -= Time.deltaTime;
+            if(blinkTime < maxBlinkTime * 0.5f)
+                visuals.GetComponent<SpriteRenderer>().color = Color.white;
+        }
+        else
+        {
+            blinkTime = maxBlinkTime;
+            visuals.GetComponent<SpriteRenderer>().color = blinkColor;
+        }
+
     }
 }
