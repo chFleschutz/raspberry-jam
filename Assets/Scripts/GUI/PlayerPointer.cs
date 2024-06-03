@@ -11,13 +11,13 @@ public class PlayerPointer : MonoBehaviour
     private void Start()
     {
         cam = Camera.main;
-        screenSize.y = cam.orthographicSize;
-        screenSize.x = cam.aspect * screenSize.y;
         player = PlayerController.Instance.transform;
     }
 
     private void Update()
     {
+        screenSize.y = cam.orthographicSize;
+        screenSize.x = cam.aspect * screenSize.y;
         float screenMinX = cam.transform.position.x - screenSize.x;
         float screenMinY = cam.transform.position.y - screenSize.y;
         float screenMaxX = cam.transform.position.x + screenSize.x;
@@ -33,10 +33,10 @@ public class PlayerPointer : MonoBehaviour
         pointer.gameObject.SetActive(true);
 
         Vector3 direction = player.transform.position - cam.transform.position;
-        float x = cam.transform.position.x + Mathf.Clamp(direction.x, screenMinX + size.x, screenMaxX - size.y);
-        float y = cam.transform.position.y + Mathf.Clamp(direction.y, screenMinY + size.y, screenMaxY - size.y);
+        float x = Mathf.Clamp(direction.x, -screenSize.x + size.x, screenSize.x - size.x);
+        float y = Mathf.Clamp(direction.y, -screenSize.y + size.y, screenSize.y - size.y);
 
-        pointer.position = new Vector3(x, y, 0);
+        pointer.localPosition = new Vector3(x, y, 100);
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         pointer.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
