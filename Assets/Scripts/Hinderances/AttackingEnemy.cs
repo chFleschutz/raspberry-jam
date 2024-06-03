@@ -21,8 +21,7 @@ public class AttackingEnemy : EnemyBase
     {
         Vector2 direction = goal - new Vector2(transform.position.x, transform.position.y);
 
-        if (direction.magnitude > detectionRadius)
-            return;
+
 
         if (visuals != null)
         {
@@ -52,13 +51,19 @@ public class AttackingEnemy : EnemyBase
             }
         }
 
-        RaycastHit2D hit;
-        Vector2 adjustedDirection = (direction.normalized * currentSpeed + knockback.normalized * knockbackPower) * Time.deltaTime;
-        if (adjustedDirection.magnitude < 0.01f)
+        if (direction.magnitude > detectionRadius)
             return;
 
+        RaycastHit2D hit;
+        Vector2 adjustedDirection = (direction.normalized * currentSpeed + knockback.normalized * knockbackPower) * Time.deltaTime;
+        if (adjustedDirection.magnitude < 0.001f)
+        {
+            currentSpeed = speed;
+            return;
+        }
+
         Vector2 newPos = CollisionForecast.ForecastBox2D(gameObject, adjustedDirection, Vector2.one, out hit);
-        if (newPos.x > 0 || newPos.x < 0)
+        if (newPos.x > 0 || newPos.x <= 0)
             transform.position = newPos;
 
         if(currentSpeed > speed)

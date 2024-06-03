@@ -71,7 +71,7 @@ public class EnemyBase : MonoBehaviour, IGameEventListener
             return;
 
         Vector2 newPos = CollisionForecast.ForecastBox2D(gameObject, adjustedDirection, Vector2.one);
-        if (newPos.x > 0 || newPos.x < 0)
+        if (newPos.x > 0 || newPos.x <= 0)
             transform.position = newPos;
 
         if(visuals != null)
